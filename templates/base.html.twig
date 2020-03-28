@@ -1,12 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Effective and unique websites - Anders Björkland!{% endblock %}</title>
+        <link href="https://fonts.googleapis.com/css?family=Raleway|Sniglet&display=swap" rel="stylesheet">
+        {% block stylesheets %}<link rel="stylesheet" href="css/style.min.css">{% endblock %}
+        <link rel="icon" 
+        type="image/png" 
+        href="favicon.svg">
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% block sidebar %}{% include "_sidebar.html.twig" %}{% endblock %}
+        <main>
+            <header id="header">
+                {% block header %}{% endblock %}
+            </header>
+            {% block body %}{% endblock %}
+        </main>
         {% block javascripts %}{% endblock %}
     </body>
 </html>

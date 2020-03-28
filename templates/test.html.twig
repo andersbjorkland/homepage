@@ -1,0 +1,11 @@
+{% extends "base.html.twig" %}
+{% block header %}
+    <h1>Test page</h1>
+{% endblock %}
+{% block body %}
+    <h2>Add an image</h2>
+
+    {{ form_start(form) }}
+        {{ form_row(form.image) }}
+    {{ form_end(form) }}
+{% endblock %}

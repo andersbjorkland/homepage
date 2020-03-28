@@ -1,0 +1,51 @@
+{% extends "base.html.twig" %}
+{% block header %} {% include "_introHeader.html.twig" %} {% endblock %}
+{% block body %}
+    <div id="sun"><img src="images/Sun.svg" alt="sun"></div>
+    <div id="pitch-container" class="intro">
+        <div id="sm-pitch">
+            <p class="pitch1">I make <span class="pink">unique</span></p>
+            <p class="pitch2">and <span class="blue">effective</span></p>
+            <p class="pitch3">websites</p>
+        </div>
+        <div id="md-pitch">
+            <p class="pitch1">I make</p>
+            <p class="pitch2"><span class="pink">unique</span> and <span class="blue">effective</span> websites</p>
+            <p class="pitch3"></p>
+        </div>
+    </div>
+    <div id="cloud-container">
+        <img id="cloud1" src="images/Cloud_1.svg" alt="cloud">
+        <img id="cloud2" src="images/Cloud_1.svg" alt="cloud">
+    </div>
+    <div id="learn-content" class="no-show">
+        <p>I am a web developer proficient in design and implementation.</p>
+        <p>My mission: your ideas communicated effectively with a unique touch.</p>
+        <a href="mailto:anders@femtearenan.se"><img src="images/Email.svg" alt="email"><p>Contact me</p></a>
+    </div>
+    <button id="learn-more" class="btn" onclick="showLearn()">
+        <p>Learn more</p>
+    </button>
+{% endblock %}
+{% block javascripts %}
+<script>
+    function showLearn() {
+        content = document.getElementById("learn-content");
+        clicked = document.getElementById("learn-more");
+        pitch = document.getElementById("pitch-container");
+        header = document.getElementById("header");
+        
+        if (content.classList.contains('show')) {
+            header.className = 'unclick'
+            pitch.className = 'reverse-fade';
+            clicked.className = 'btn';
+            content.className = 'reverse';
+        } else {
+            header.className = 'click'
+            pitch.className = 'fade';
+            clicked.className = 'btn clicked';
+            content.className = 'show';
+        }
+    }
+</script>
+{% endblock %}
