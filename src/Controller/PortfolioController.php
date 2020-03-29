@@ -78,7 +78,7 @@ class PortfolioController extends AbstractController
             }
             
             try {
-                $name = $form->get('image')->getData();
+                $name = $form->get('name')->getData();
                 $portfolioEntry->setName($name);
 
                 $description = $form->get('textDescription')->getData();

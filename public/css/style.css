@@ -476,6 +476,10 @@ article .wp-block-gallery ul {
     fill: #60C5FC;
   }
 }
+.admin-header {
+  width: 100%;
+}
+
 #admin-control {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -486,7 +490,11 @@ article .wp-block-gallery ul {
 }
 #admin-control a:hover {
   background-color: #fdfcfd;
-  color: #FC60C5;
+}
+#admin-control a.active {
+  background-color: #fdfcfd;
+  -webkit-box-shadow: 5px 5px 8px #F5C7FC;
+          box-shadow: 5px 5px 8px #F5C7FC;
 }
 #admin-control #admin-heading {
   font-size: 1.4rem;
@@ -501,6 +509,41 @@ article .wp-block-gallery ul {
   padding: 1rem;
   -webkit-box-shadow: 5px 5px 8px #ddd;
           box-shadow: 5px 5px 8px #ddd;
+}
+
+form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+form div {
+  margin-bottom: 0.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+form div label {
+  margin-right: 0.5rem;
+  width: 6.5rem;
+  text-align: end;
+}
+
+[type=submit] {
+  font-size: 1.3rem;
+  border-radius: 4px;
+  border: none;
+  -webkit-box-shadow: 2px 1px 15px 4px rgba(0, 0, 0, 0.14);
+          box-shadow: 2px 1px 15px 4px rgba(0, 0, 0, 0.14);
+  background-color: #6077FC;
+  color: white;
 }
 
 #back-sm {

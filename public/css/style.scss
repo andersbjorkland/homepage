@@ -369,13 +369,22 @@ article {
     }
 }
 
+.admin-header {
+    width: 100%;
+}
+
 #admin-control {
     display: flex;
     align-items: center;
 
     a:hover {
         background-color: $mainBg;
-        color: $cherry;
+        // color: $cherry;
+    }
+
+    a.active {
+        background-color: $mainBg;
+        box-shadow: 5px 5px 8px $activeSm;
     }
 
     #admin-heading {
@@ -391,6 +400,33 @@ article {
     margin: 0.5rem;
     padding: 1rem;
     box-shadow: 5px 5px 8px #ddd;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+
+    div {
+        margin-bottom: 0.5rem;
+        display: flex;
+        flex-direction: row;
+
+        label {
+            margin-right: 0.5rem;
+            width: 6.5rem;
+            text-align: end;
+        }
+
+    }
+}
+
+[type="submit"] {
+    font-size: 1.3rem;
+    border-radius: 4px;
+    border: none;
+    box-shadow: 2px 1px 15px 4px rgba(0,0,0,0.14);
+    background-color: $solidBlue;
+    color: white;
 }
 
 #back-sm {
