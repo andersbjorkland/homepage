@@ -17,7 +17,7 @@ class PortfolioEntryType extends AbstractType {
         $builder
             ->add('name', TextType::class, ['label' => "Title"])
             ->add('image', FileType::class, [
-                'label' => 'Choose a file',
+                'label' => 'Image',
                 'mapped' => false,
                 'required' => false,
                 'constraints' => [
@@ -31,7 +31,19 @@ class PortfolioEntryType extends AbstractType {
                     ])
                 ]
             ])
-            ->add('textDescription', TextType::class, ['label' => "Description"]);
+            ->add('textDescription', TextType::class, ['label' => "Description"])
+            ->add('link', TextType::class, ['label' => "Link"])
+            ->add('file', FileType::class, [
+                'label' => 'Downloadable',
+                'mapped' => false,
+                'required' => false,
+                'constraints' => [
+                    new File([
+                        'maxSize' => '50M'
+                    ])
+                ]
+            ])
+            ;
     }
 
     public function configureOptions(OptionsResolver $resolver)

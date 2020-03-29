@@ -49,6 +49,7 @@ class PortfolioController extends AbstractController
             /** @var UploadedFile $imageFile */
             $data = $form->get('image')->getData();
             $imageFile = $form->get('image')->getData();
+            $downloadableFile = $form->get('file')->getData();
 
             $entityManager = $this->getDoctrine()->getManager();
 
@@ -75,6 +76,26 @@ class PortfolioController extends AbstractController
 
                 $image->setFileName($newFilename);
                 $entityManager->persist($image);
+            }
+
+            if ($downloadableFile) {
+                $originalFilename = pathinfo($downloadableFile->getClientOriginalName(), PATHINFO_FILENAME);
+                // this is needed to safely include the file name as part of the URL
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$downloadableFile->guessExtension();
+
+                // Move the file to the directory where images are stored
+                try {
+                    $downloadableFile->move(
+                        $this->getParameter('files_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                    $errors[] = $e;
+                }
+
+                $portfolioEntry->setFilename($newFilename);
             }
             
             try {
