@@ -355,6 +355,44 @@ article {
     }
 }
 
+#admin-link:hover #crown{
+    // transform: translate(0px, 17.086px);
+    animation: admin;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-out;
+}
+
+@keyframes admin {
+    50% {
+        fill: #60C5FC;
+    }
+}
+
+#admin-control {
+    display: flex;
+    align-items: center;
+
+    a:hover {
+        background-color: $mainBg;
+        color: $cherry;
+    }
+
+    #admin-heading {
+        font-size: 1.4rem;
+    }
+}
+
+#admin-control a {
+    color: $darkGrey;
+    background-color: $navBg;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0.5rem;
+    padding: 1rem;
+    box-shadow: 5px 5px 8px #ddd;
+}
+
 #back-sm {
     position: relative;
     top: 2em;
