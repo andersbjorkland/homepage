@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+{% set page = "about" %}
+
+{% block body %}
+<div id="about-container">
+    <div id="intro-about">
+        <div id="fast-intro">
+            <h1 id="blog-header">Hi!</h1>
+            <p>My name is Anders Björkland</p>
+            <p>I am enthusiastic about coding, gaming and running.</p>
+            <p>Currently playing <i>Red Dead Redemption 2</i></p>
+        </div>
+        <figure>
+            <img id="selfie1" src="{{ asset('images/portrait feb2020.jpg') }}" alt="Selfie - of me">
+        </figure>
+    </div>
+    <section>
+           <h2>What's the deal?</h2>
+           <p>I am part self-taught programmer. There’s been so many people around and about that have helped me develop my coding skills. My first venture into coding was with Java. I developed a waveform combiner, so I could visualize what happens when you combine 3 waves of different frequencies or phases. I have since then delved into web development with my ongoing project Bokarenan, a book community built upon the PHP framework Symfony.</p>
+           <p>My formal training is in political science, so I have an affinity for making sense of how numbers can express what’s going on in the society (small or large scale). I have an ongoing small scale project that is overlapping with one of my other hobbies: running, and how distance and weight difference post-run will diverge from a good correlation as the temperature changes. When the data is in I am going to utilize the power of JavaScript to demonstrate it.</p>
+
+           <h3>Cheat sheet</h3>
+           <ul>
+               <li>Greatest coding achievement was when I first freestyled Java. I used trigonometry and mathematical functions to describe the shape of a cloud for a mind map-application.</li>
+               <li>First started coding on Amiga 500 where I made a simple shoot ‘em up with Easy Amos when I was 13.</li>
+               <li>Book recommendation is <cite>The Real Happy Pill: Power Up Your Brain by Moving Your Body</cite> by Anders Hansen.</li>
+               <li>A game that's never gone old is The Settlers, which I first played with my siblings on Amiga.</li>
+               <li>Music (if any) that I play while coding is anything synthwave.</li>
+               <li>Music (if any) that brings me joy is Andrew W.K:s album <cite>You're not alone</cite></li>
+           </ul>
+       </section>
+</div>
+
+
+{% endblock %}

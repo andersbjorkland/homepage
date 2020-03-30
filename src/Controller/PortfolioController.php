@@ -34,6 +34,13 @@ class PortfolioController extends AbstractController
     }
 
     /**
+     * @Route("/anders/portfolio")
+     */
+    public function subIndex() {
+        return $this->index();
+    }
+
+    /**
      * @Route("/portfolio/add", name="portfolio_add")
      */
     public function add(Request $request, SluggerInterface $slugger)

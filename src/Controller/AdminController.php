@@ -28,4 +28,11 @@ class AdminController extends AbstractController
     {
         return $this->render('admin.html.twig');
     }
+
+    /**
+     * @Route("/anders/admin")
+     */
+    public function subIndex() {
+        return $this->index();
+    }
 }
