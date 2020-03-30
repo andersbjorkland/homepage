@@ -26,8 +26,10 @@ class PortfolioController extends AbstractController
      */
     public function index()
     {
+        $portfolioRepository = $this->getDoctrine()->getRepository(PortfolioEntry::class);
+        $projects = $portfolioRepository->findAll();
         return $this->render('portfolio/index.html.twig', [
-            'controller_name' => 'PortfolioController',
+            'projects' => $projects,
         ]);
     }
 
