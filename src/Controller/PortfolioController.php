@@ -41,7 +41,7 @@ class PortfolioController extends AbstractController
     }
 
     /**
-     * @Route("/portfolio/add", name="portfolio_add")
+     * @Route("/admin/portfolio", name="portfolio_add")
      */
     public function add(Request $request, SluggerInterface $slugger)
     {

@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+{% set page = "admin" %}
+{% set adminControl = "blog" %}
+
+{% block header %} {% include "_adminControl.html.twig" %} {% endblock %}
+{% block body %}
+    <h2>Add a blog post</h2>
+    {% for error in errors %}
+        <p>{{ error }}</p>
+    {% endfor %}
+    {% if added %}
+        <p>You have successfully added a blog post!</p>
+    {% endif %}
+    <div class="form-container">
+    {{ form_start(form) }}
+        {{ form_row(form.title) }}
+        {{ form_row(form.text) }}
+        {{ form_row(form.images) }}
+        {{ form_row(form.publishTime) }}
+
+    {{ form_end(form) }}
+    </div>
+{% endblock %}
+{% block javascript %}
+<script>
+
+</script>
+{% endblock %}

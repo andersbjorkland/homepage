@@ -175,6 +175,12 @@ figure {
 #about-container {
     justify-self: flex-start;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#about-section {
+    align-self: center;
 }
 
 section {
