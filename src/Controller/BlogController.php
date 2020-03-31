@@ -12,6 +12,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -38,9 +39,10 @@ class BlogController extends AbstractController
     {
         $post = new Post();
         $dummy = new Image();
+        $file = new File("");
         $dummy->setFileName("Example");
         $post->addImage($dummy);
-        $form = $this->createForm(BlogType::class, $post)
+        $form = $this->createForm(BlogType::class, $file)
             ->add('save', SubmitType::class, ['label' => 'Add Post']);
         $form->handleRequest($request);
 
@@ -50,11 +52,12 @@ class BlogController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             /** @var UploadedFile $imageFile */
             $images = $form->get('images')->getData();
+            var_dump($images[0]);
 
             $entityManager = $this->getDoctrine()->getManager();
 
             $now = date("Y-m-d\TH:i:s");
-            $post->setEntered($now);
+            $post->setEntered(new DateTime("now"));
 
             // this condition is needed because the 'image' field is not required
             // so the image file must be processed only when a file is uploaded
