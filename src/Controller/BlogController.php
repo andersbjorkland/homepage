@@ -29,7 +29,7 @@ class BlogController extends AbstractController
      * @Route("/anders/admin/blog")
      */
     public function subIndex() {
-        return $this->index();
+        return $this->add();
     }
 
     /**
@@ -38,11 +38,11 @@ class BlogController extends AbstractController
     public function add(Request $request, SluggerInterface $slugger)
     {
         $post = new Post();
-        $dummy = new Image();
-        $file = new File("");
-        $dummy->setFileName("Example");
-        $post->addImage($dummy);
-        $form = $this->createForm(BlogType::class, $file)
+        // $dummy = new Image();
+        // $file = new File("");
+        // $dummy->setFileName("Example");
+        // $post->addImage($dummy);
+        $form = $this->createForm(BlogType::class, $post)
             ->add('save', SubmitType::class, ['label' => 'Add Post']);
         $form->handleRequest($request);
 
@@ -51,8 +51,8 @@ class BlogController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             /** @var UploadedFile $imageFile */
-            $images = $form->get('images')->getData();
-            var_dump($images[0]);
+            $data = $form->getData();
+            $imageFile = $form->get('image')->getData();
 
             $entityManager = $this->getDoctrine()->getManager();
 
@@ -61,40 +61,38 @@ class BlogController extends AbstractController
 
             // this condition is needed because the 'image' field is not required
             // so the image file must be processed only when a file is uploaded
-            if ($images) {
+            if ($imageFile) {
+                $image = new Image();
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
 
-                foreach ($images as $imageFile) {
-                    $image = new Image();
-                    $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
-                    // this is needed to safely include the file name as part of the URL
-                    $safeFilename = $slugger->slug($originalFilename);
-                    $newFilename = $safeFilename.'-'.uniqid().'.'.$imageFile->guessExtension();
-
-                    // Move the file to the directory where images are stored
-                    try {
-                        $imageFile->move(
-                            $this->getParameter('images_directory'),
-                            $newFilename
-                        );
-                    } catch (FileException $e) {
-                        // ... handle exception if something happens during file upload
-                        $errors[] = $e;
-                    }
-
-                    $image->setFileName($newFilename);
-                    $entityManager->persist($image);
-                    $post->addImage($image);
+                // this is needed to safely include the file name as part of the URL
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$imageFile->guessExtension();
+                // Move the file to the directory where images are stored
+                try {
+                    $imageFile->move(
+                        $this->getParameter('images_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                    $errors[] = $e;
                 }
+
+                $image->setFileName($newFilename);
+                $entityManager->persist($image);
+                $post->addImage($image);
                 
             }
 
             $publish = "";
             try {
                 $name = $form->get('title')->getData();
-                $post->setName($name);
+                $post->setTitle($name);
 
                 $text = $form->get('text')->getData();
                 $post->setText($text);
+                $post->setUser($this->getUser());
 
                 if (null !== $request->request->get('publishTime')) {
                     $publish = $request->request->get('publishTime');
@@ -111,7 +109,7 @@ class BlogController extends AbstractController
             }
             
             if (empty($errors)) {
-                $slug .= substr($publish, 0, 10);
+                $slug = substr($publish->format("Y-m-d H:i:s"), 0, 10);
                 $slug .= "_";
                 $title_slug = str_replace(" ", "_", $post->getTitle());
                 $slug .= $title_slug;

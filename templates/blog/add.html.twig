@@ -18,70 +18,9 @@
     {{ form_start(form) }}
         {{ form_row(form.title) }}
         {{ form_row(form.text) }}
-        <ul class="images-form" data-prototype="{{ form_widget(form.images.vars.prototype)|e('html_attr') }}" >
-        {% for image in form.images %}
-            <li>{{ form_row(image) }}</li>
-        {% endfor %}
-        </ul>
+        {{ form_row(form.image) }}
         {{ form_row(form.publishTime) }}
 
     {{ form_end(form) }}
     </div>
-{% endblock %}
-{% block javascripts %}
-<script>
-(function(){
-    console.log("TEST");
-})
-var $collectionHolder;
-
-// setup an "add a tag" link
-var $addImgButton = $('<button type="button" class="add_img">Add image</button>');
-var $newImg = $('<li></li>').append($addImgButton);
-console.log("HELLO WORLD!");
-
-jQuery(document).ready(function() {
-    console.log("HELLO jQuery!");
-    // Get the ul that holds the collection of tags
-    $collectionHolder = $('ul.images-form');
-
-    // add the "add a tag" anchor and li to the tags ul
-    $collectionHolder.append($newImg);
-
-    // count the current form inputs we have (e.g. 2), use that as the new
-    // index when inserting a new item (e.g. 2)
-    $collectionHolder.data('index', $collectionHolder.find(':input').length);
-
-    $addImgButton.on('click', function(e) {
-        // add a new tag form (see next code block)
-        addImgForm($collectionHolder, $newImg);
-    });
-});
-
-function addImgForm($collectionHolder, $newImg) {
-    // Get the data-prototype explained earlier
-    var prototype = $collectionHolder.data('prototype');
-
-    // get the new index
-    var index = $collectionHolder.data('index');
-
-    var newForm = prototype;
-    // You need this only if you didn't set 'label' => false in your tags field in TaskType
-    // Replace '__name__label__' in the prototype's HTML to
-    // instead be a number based on how many items we have
-    // newForm = newForm.replace(/__name__label__/g, index);
-
-    // Replace '__name__' in the prototype's HTML to
-    // instead be a number based on how many items we have
-    newForm = newForm.replace(/__name__/g, index);
-
-    // increase the index with one for the next item
-    $collectionHolder.data('index', index + 1);
-
-    // Display the form in the page in an li, before the "Add a tag" link li
-    var $newFormP = $('<li></li>').append(newForm);
-    $newImg.before($newFormP);
-}
-
-</script>
 {% endblock %}
