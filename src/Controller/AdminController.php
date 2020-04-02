@@ -28,7 +28,7 @@ class AdminController extends AbstractController
     public function index()
     {
         $postRepository = $this->getDoctrine()->getRepository(Post::class);
-        $unpublished = $postRepository->getUnpublisher();
+        $unpublished = $postRepository->getUnpublished();
         $published = $postRepository->getLatestPaginated(1, 10);
 
 
