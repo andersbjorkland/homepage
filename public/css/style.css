@@ -523,6 +523,36 @@ article .wp-block-gallery ul {
           box-shadow: 5px 5px 8px #ddd;
 }
 
+.form-container {
+  width: 100%;
+  color: #5a5a5a;
+}
+.form-container form {
+  font-size: 2rem;
+}
+.form-container form div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.form-container form #blog_title {
+  font-size: 1.8rem;
+}
+.form-container form input {
+  -ms-flex-item-align: center;
+      align-self: center;
+}
+.form-container form input, .form-container form textarea {
+  padding: 0.1rem 0.5rem;
+  color: #5a5a5a;
+  width: 100%;
+  max-width: 45rem;
+}
+.form-container form textarea {
+  height: 20rem;
+  font-size: 1.2rem;
+}
+
 form {
   display: -webkit-box;
   display: -ms-flexbox;
