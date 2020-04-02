@@ -38,10 +38,6 @@ class BlogController extends AbstractController
     public function add(Request $request, SluggerInterface $slugger)
     {
         $post = new Post();
-        // $dummy = new Image();
-        // $file = new File("");
-        // $dummy->setFileName("Example");
-        // $post->addImage($dummy);
         $form = $this->createForm(BlogType::class, $post)
             ->add('save', SubmitType::class, ['label' => 'Add Post']);
         $form->handleRequest($request);

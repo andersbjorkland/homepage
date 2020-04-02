@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Image;
 use App\Entity\PortfolioEntry;
+use App\Entity\Post;
 use App\Form\ImageType;
 use App\Form\PortfolioEntryType;
 
@@ -26,7 +27,15 @@ class AdminController extends AbstractController
      */
     public function index()
     {
-        return $this->render('admin.html.twig');
+        $postRepository = $this->getDoctrine()->getRepository(Post::class);
+        $unpublished = $postRepository->getUnpublisher();
+        $published = $postRepository->getLatestPaginated(1, 10);
+
+
+        return $this->render('admin.html.twig', [
+            'unpublished' => $unpublished,
+            'published' => $published,
+        ]);
     }
 
     /**

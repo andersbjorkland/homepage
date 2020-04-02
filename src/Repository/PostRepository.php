@@ -6,6 +6,8 @@ use App\Entity\Post;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
+use \DateTime;
+
 /**
  * @method Post|null find($id, $lockMode = null, $lockVersion = null)
  * @method Post|null findOneBy(array $criteria, array $orderBy = null)
@@ -17,6 +19,78 @@ class PostRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Post::class);
+    }
+
+    /**
+     * @return Post[] Returns an array of Post objects
+     */
+    public function getLatestPaginated($page, $limit)
+    {
+        $offset =($page - 1) * $limit;
+        $now = new DateTime("now");
+        return $this->createQueryBuilder('b')
+            ->andWhere('b.publish < :now')
+            ->setParameter('now', $now)
+            ->orderBy('b.id', 'DESC')
+            ->setFirstResult($offset)
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    /**
+     * @return Post[] Returns an array of Post objects
+     */
+    public function getUnpublished()
+    {
+        $now = new DateTime("now");
+        return $this->createQueryBuilder('b')
+            ->andWhere('b.publish > :now')
+            ->setParameter('now', $now)
+            ->orderBy('b.id', 'DESC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    /**
+     * @return Post Returns the latest published Post object
+     */
+    public function getLatestPost()
+    {
+        $now = new DateTime("now");
+        $post = $this->createQueryBuilder('b')
+            ->andWhere('b.publish < :now')
+            ->setParameter('now', $now)
+            ->orderBy('b.id', 'DESC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getSingleResult()
+        ;
+
+        return $post;
+    }
+
+    /**
+     * @return int Number of items in repository
+     */
+    public function getCount()
+    {
+        $now = new DateTime("now");
+        $result = $this->createQueryBuilder('b')
+            ->andWhere('b.publish < :now')
+            ->setParameter('now', $now)
+            ->select('count(b.id)')
+            ->getQuery()
+            ->getSingleResult();
+        ;
+        $count = 0;
+        foreach ($result as $c => $v) {
+            $count = $v;
+        }
+        
+        return $count;
     }
 
     // /**
