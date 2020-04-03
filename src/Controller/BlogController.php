@@ -164,11 +164,10 @@ class BlogController extends AbstractController
 
             if (count($post->getImages()) > 0 && $imageFile) {
                 if ($imageFile->getClientOriginalName() !== $post->getImages()[0]) {
-                    $originalFile = new File($this->getParameter('images_directory') . $post->getImages()[0]->getFileName());
-                    if (file_exists($originalFile)) {
-                        unlink($originalFile);
-
-                        $post->removeImage($post->getImages()[0]);
+                    $image = $post->getImages()[0];
+                    if ($this->deleteImageFile($image)) {
+                        $post->removeImage($image);
+                        $entityManager->remove($image);
                         $messages[] = "Removed a previous image.";
                     }
                 }
@@ -256,6 +255,11 @@ class BlogController extends AbstractController
 
         if ("POST" === $request->getMethod()) {
             $entityManager = $this->getDoctrine()->getManager();
+            foreach ($post->getImages() as $image) {
+                $post->removeImage($image);
+                $this->deleteImageFile($image);
+                $entityManager->remove($image);
+            }
             $entityManager->remove($post);
             $entityManager->flush();
             $removed = true;
@@ -266,5 +270,17 @@ class BlogController extends AbstractController
             'removed' => $removed
         ]);
         
+    }
+
+
+    private function deleteImageFile(Image $image) {
+        $remove = false;
+        $originalFile = new File($this->getParameter('images_directory') .'/'. $image->getFileName());
+        if (file_exists($originalFile)) {
+            unlink($originalFile);
+            $remove = true;
+        }
+
+        return $remove;
     }
 }
