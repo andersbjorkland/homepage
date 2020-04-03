@@ -1,0 +1,18 @@
+{% extends "base.html.twig" %}
+{% set page = "blog" %}
+{# {% set adminControl = "blog" %} #}
+{% block headJS %}
+    <script src="https://kit.fontawesome.com/44dcb31394.js" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block body %}
+    <div id="blog-container">
+        {% if image is not empty %}
+            <img src="{{ asset('uploads/images/' ~ image.fileName) }}" alt="Image for {{ post.title }}">
+        {% endif %}
+        <h1>{{ post.title }}</h1>
+        <p><time>{{ post.publishTime|date("d/m/Y") }}</time></p>
+        <pre>{{ post.text|striptags('<em><strong><i><mark><cite><dfn>')|raw|nl2br }}</pre>
+        <a href="https://twitter.com/intent/tweet?hashtags=webdev&text={{ post.title ~ '%20at%20https://femtearenan.se/blog/post/' ~ post.slug }}" target="_blank" rel="noopener noreferrer""><i class="fab fa-twitter"></i></a>
+    </div>
+{% endblock %}

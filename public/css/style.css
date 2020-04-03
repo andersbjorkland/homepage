@@ -155,8 +155,59 @@ h3 {
   margin-top: 2.5rem;
 }
 
+#blog-index {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#blog-title {
+  margin: 0;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+}
+
 #blog-container {
-  width: 100%;
+  margin-top: 4rem;
+  max-width: 45rem;
+}
+#blog-container img {
+  max-width: 100%;
+}
+#blog-container pre {
+  font-size: 1.2rem;
+  font-style: "Raleway", Arial, Helvetica, sans-serif;
+  white-space: pre-wrap;
+}
+
+#blog-list {
+  margin-top: 4rem;
+  font-size: 0.7rem;
+}
+#blog-list h3, #blog-list p, #blog-list a {
+  margin: 0.5rem 0.3rem;
+}
+#blog-list a {
+  color: #FC60C5;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  text-decoration: none;
+}
+
+.post-pages {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 0.3rem;
 }
 
 #selfie1 {
@@ -1141,8 +1192,8 @@ button.clicked:hover {
   }
 
   main {
-    padding-left: 3rem;
-    padding-right: 3rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
     padding-bottom: 3rem;
   }
 
@@ -1430,8 +1481,8 @@ button.clicked:hover {
             animation: activeLink;
     -webkit-animation-timing-function: ease-in-out;
             animation-timing-function: ease-in-out;
-    -webkit-animation-duration: 1s;
-            animation-duration: 1s;
+    -webkit-animation-duration: 0.3s;
+            animation-duration: 0.3s;
     -webkit-animation-fill-mode: forwards;
             animation-fill-mode: forwards;
   }
@@ -1440,8 +1491,8 @@ button.clicked:hover {
             animation: changeMintToWhiteFill;
     -webkit-animation-timing-function: ease-in-out;
             animation-timing-function: ease-in-out;
-    -webkit-animation-duration: 1s;
-            animation-duration: 1s;
+    -webkit-animation-duration: 0.4s;
+            animation-duration: 0.4s;
     -webkit-animation-fill-mode: forwards;
             animation-fill-mode: forwards;
   }
@@ -1453,8 +1504,8 @@ button.clicked:hover {
             animation: fade-in;
     -webkit-animation-timing-function: ease-out;
             animation-timing-function: ease-out;
-    -webkit-animation-duration: 1s;
-            animation-duration: 1s;
+    -webkit-animation-duration: 0.3s;
+            animation-duration: 0.3s;
     -webkit-animation-fill-mode: forwards;
             animation-fill-mode: forwards;
   }
@@ -1561,6 +1612,12 @@ button.clicked:hover {
   #social-links a {
     text-align: center;
     font-size: 1.2rem;
+  }
+}
+@media (min-width: 1100px) {
+  #blog-index {
+    display: grid;
+    grid-template-columns: minmax(25rem, 45rem) minmax(10rem, 30rem);
   }
 }
 @media (min-width: 1200px) and (min-height: 700px) {

@@ -1,0 +1,35 @@
+{% extends "base.html.twig" %}
+{% set page = "blog" %}
+{# {% set adminControl = "blog" %} #}
+
+{% block headJS %}
+    <script src="https://kit.fontawesome.com/44dcb31394.js" crossorigin="anonymous"></script>
+{% endblock %}
+{% block body %}
+    
+    <div id="blog-index">
+        <div id="blog-container">
+            {% if image is not empty %}
+                <img src="{{ asset('uploads/images/' ~ image.fileName) }}" alt="Image for {{ post.title }}">
+            {% endif %}
+            <h1 id="blog-title">{{ post.title }}</h1>
+            <p><time>{{ post.publishTime|date("d/m/Y") }}</time></p>
+            <pre>{{ post.text|striptags('<em><strong><i><mark><cite><dfn>')|raw|nl2br }}</pre>
+            <a href="https://twitter.com/intent/tweet?hashtags=webdev&text={{ post.slug }}" target="_blank" rel="noopener noreferrer""><i class="fab fa-twitter"></i></a>
+        </div>
+        <div id="blog-list">
+            {% for postItem in posts %}
+                <div class="post-container">
+                    <a href="{{ path('post_slug', {'slug': postItem.slug}) }}"><h3>{{ postItem.title }}</h3> <p>{{ postItem.publishTime|date("d/m/Y") }}</p></a>
+                </div>
+            {% endfor %}
+                <div class="post-pages">
+                    {% if pages > 1 %}
+                        {% for i in 1 .. pages %}
+                            <a href="{{ path('post_page', {'page': i}) }}">{{ i }}</a>
+                        {% endfor %}
+                    {% endif %} 
+                </div>
+        </div>
+    </div>
+{% endblock %}

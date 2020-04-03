@@ -26,6 +26,7 @@
                 <h3>{{ post.title }}</h3> <p>{{ post.publishTime|date("d/m/Y") }}</p> 
                 <a href="{{ path('post_edit', {'id': post.id}) }}">Edit</a>
                 <a href="{{ path('post_delete', {'id': post.id}) }}">Delete</a>
+                <a href="{{ path('post_slug', {'slug': post.slug}) }}">View</a>
             </div>
         {% endfor %}
     </section>

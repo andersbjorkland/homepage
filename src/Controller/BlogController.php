@@ -26,10 +26,10 @@ class BlogController extends AbstractController
 
 
     /**
-     * @Route("/anders/admin/blog")
+     * @Route("/anders/blog")
      */
     public function subIndex() {
-        return $this->add();
+        return $this->index();
     }
 
     /**
@@ -272,7 +272,6 @@ class BlogController extends AbstractController
         
     }
 
-
     private function deleteImageFile(Image $image) {
         $remove = false;
         $originalFile = new File($this->getParameter('images_directory') .'/'. $image->getFileName());
@@ -282,5 +281,63 @@ class BlogController extends AbstractController
         }
 
         return $remove;
+    }
+
+    /**
+     * @Route("/blog/post/{slug}", name="post_slug")
+     */
+    public function displayPostBySlug(Post $post) {
+        return $this->displayPostById($post);
+    }
+
+    /**
+     * @Route("/blog/post/{id}", name="post_id")
+     */
+    public function displayPostById(Post $post) {
+        $image = null;
+        if (null !== $post->getImages()[0]) {
+            $image = $post->getImages()[0];
+        }
+        return $this->render('blog/view.html.twig', [
+            'post' => $post,
+            'image' => $image
+        ]);
+    }
+
+    /**
+     * @Route("/blog", name="post_index")
+     */
+    public function index() {
+        return $this->indexByPage(1);
+    }
+
+    /**
+     * @Route("/blog/{page}", name="post_page")
+     */
+    public function indexByPage($page) {
+        // $entityManager = $this->getDoctrine()->getManager();
+        $postRepository = $this->getDoctrine()->getRepository(Post::class);
+        $post = $postRepository->getLatestPost();
+
+        $limit = 1;
+        $numberOfPosts = $postRepository->getCount();
+        $numberOfPages = \ceil($numberOfPosts / $limit);
+        if ($page > $numberOfPages) {
+            $this->redirectToRoute("post_index");
+        }
+
+        $posts = $postRepository->getLatestPaginated($page, $limit);
+
+        $image = null;
+        if (null !== $post->getImages()[0]) {
+            $image = $post->getImages()[0];
+        }
+        return $this->render('blog/index.html.twig', [
+            'post' => $post,
+            'posts' => $posts,
+            'image' => $image,
+            'pages' => $numberOfPages,
+            'currentPage' => $page
+        ]);
     }
 }
