@@ -1,0 +1,31 @@
+{% extends "base.html.twig" %}
+{% set page = "admin" %}
+{% set adminControl = "blog" %}
+{% block headJS %}
+    <script src="{{ asset('js/jquery-3.4.1.js') }}"></script>
+{% endblock %}
+
+{% block header %} {% include "_adminControl.html.twig" %} {% endblock %}
+{% block body %}
+    
+    {% for error in errors %}
+        <p>{{ error }}</p>
+    {% endfor %}
+    {% for message in messages %}
+        <p>{{ message }}</p>
+    {% endfor %}
+    {% if added %}
+        <p>You have successfully edited a blog post!</p>
+    {% endif %}
+    <div class="form-container">
+    {{ form_start(form) }}
+        <h2>Edit a blog post</h2>
+        {{ form_row(form.title) }}
+        {{ form_row(form.text) }}
+        {{ form_row(form.image) }}
+        <p class="small">Current image: {{ image }}</p>
+        {{ form_row(form.publishTime) }}
+
+    {{ form_end(form) }}
+    </div>
+{% endblock %}

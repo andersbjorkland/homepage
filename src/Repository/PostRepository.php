@@ -29,7 +29,7 @@ class PostRepository extends ServiceEntityRepository
         $offset =($page - 1) * $limit;
         $now = new DateTime("now");
         return $this->createQueryBuilder('b')
-            ->andWhere('b.publish < :now')
+            ->andWhere('b.publishTime < :now')
             ->setParameter('now', $now)
             ->orderBy('b.id', 'DESC')
             ->setFirstResult($offset)
@@ -46,7 +46,7 @@ class PostRepository extends ServiceEntityRepository
     {
         $now = new DateTime("now");
         return $this->createQueryBuilder('b')
-            ->andWhere('b.publish > :now')
+            ->andWhere('b.publishTime > :now')
             ->setParameter('now', $now)
             ->orderBy('b.id', 'DESC')
             ->getQuery()
@@ -61,7 +61,7 @@ class PostRepository extends ServiceEntityRepository
     {
         $now = new DateTime("now");
         $post = $this->createQueryBuilder('b')
-            ->andWhere('b.publish < :now')
+            ->andWhere('b.publishTime < :now')
             ->setParameter('now', $now)
             ->orderBy('b.id', 'DESC')
             ->setMaxResults(1)
@@ -79,7 +79,7 @@ class PostRepository extends ServiceEntityRepository
     {
         $now = new DateTime("now");
         $result = $this->createQueryBuilder('b')
-            ->andWhere('b.publish < :now')
+            ->andWhere('b.publishTime < :now')
             ->setParameter('now', $now)
             ->select('count(b.id)')
             ->getQuery()

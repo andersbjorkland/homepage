@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+{% set page = "admin" %}
+{% set adminControl = "blog" %}
+{% block headJS %}
+    <script src="{{ asset('js/jquery-3.4.1.js') }}"></script>
+{% endblock %}
+
+{% block header %} {% include "_adminControl.html.twig" %} {% endblock %}
+{% block body %}
+    <h2>Deleting a blog post</h2>
+    {% if removed %}
+        <p>You have successfully deleted a blog post!</p>
+    {% else %}
+        <form method="post">
+        <p>You are about to delete the blog post: </p>
+        <p><em>{{ post.title }}</em></p>
+        <p>that was first created at {{ post.entered|date("d/m/Y") }}.</p>
+        <p>Are you sure?</p>
+        <button type="submit" class="btn">Delete</button>
+    </form>
+    {% endif %}
+{% endblock %}

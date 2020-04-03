@@ -413,14 +413,28 @@ article {
     color: $darkGrey;
 
     form {
+        display: flex;
+        flex-direction: column;
         font-size: 2rem;
 
+        h2 {
+            margin-left: 12.5rem;
+        }
+
         div {
+            margin-bottom: 0.5rem;
             display: flex;
+            flex-direction: row;
         }
 
         #blog_title {
             font-size: 1.8rem;
+        }
+
+        label {
+            margin-right: 0.5rem;
+            width: 12rem;
+            text-align: end;
         }
 
         input {
@@ -440,26 +454,14 @@ article {
             font-size: 1.2rem;
         }
 
-    }
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-
-    div {
-        margin-bottom: 0.5rem;
-        display: flex;
-        flex-direction: row;
-
-        label {
-            margin-right: 0.5rem;
-            width: 6.5rem;
-            text-align: end;
+        p {
+            margin-left: 12.5rem;
+            font-size: 1rem;
         }
 
     }
 }
+
 
 [type="submit"] {
     font-size: 1.3rem;
@@ -483,6 +485,10 @@ main {
     grid-column: 2/3;
     min-height: 100vh;
     background-color: $mainBg;
+}
+
+div.start {
+    align-self: flex-start;
 }
 
 header {
@@ -1198,5 +1204,14 @@ button.clicked:hover {
     
     #learn-more {
         display: none;
+    }
+}
+
+.post-container {
+    display: flex;
+    align-items: baseline;
+
+    p, a {
+        margin-left: 0.5rem;
     }
 }

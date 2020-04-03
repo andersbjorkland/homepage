@@ -528,15 +528,35 @@ article .wp-block-gallery ul {
   color: #5a5a5a;
 }
 .form-container form {
-  font-size: 2rem;
-}
-.form-container form div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-size: 2rem;
+}
+.form-container form h2 {
+  margin-left: 12.5rem;
+}
+.form-container form div {
+  margin-bottom: 0.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 .form-container form #blog_title {
   font-size: 1.8rem;
+}
+.form-container form label {
+  margin-right: 0.5rem;
+  width: 12rem;
+  text-align: end;
 }
 .form-container form input {
   -ms-flex-item-align: center;
@@ -552,30 +572,9 @@ article .wp-block-gallery ul {
   height: 20rem;
   font-size: 1.2rem;
 }
-
-form {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-form div {
-  margin-bottom: 0.5rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-}
-form div label {
-  margin-right: 0.5rem;
-  width: 6.5rem;
-  text-align: end;
+.form-container form p {
+  margin-left: 12.5rem;
+  font-size: 1rem;
 }
 
 [type=submit] {
@@ -608,6 +607,11 @@ main {
   grid-column: 2/3;
   min-height: 100vh;
   background-color: #fdfcfd;
+}
+
+div.start {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
 }
 
 header {
@@ -1577,5 +1581,16 @@ button.clicked:hover {
   #learn-more {
     display: none;
   }
+}
+.post-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+}
+.post-container p, .post-container a {
+  margin-left: 0.5rem;
 }
 /*# sourceMappingURL=style.css.map */

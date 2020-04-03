@@ -2,3 +2,33 @@
 {% set page = "admin" %}
 {% set adminControl = "root" %}
 {% block header %} {% include "_adminControl.html.twig" %} {% endblock %}
+
+{% block body %}
+<div class="start">
+    {% if unpublished|length > 0 %}
+    <section>
+        <h2>Unpublished posts</h2>
+        {% for post in unpublished %}
+            <div class="post-container">
+                <h3>{{ post.title }}</h3> <p>{{ post.publishTime|date("d/m/Y") }}</p> 
+                <a href="{{ path('post_edit', {'id': post.id}) }}">Edit</a>
+                <a href="{{ path('post_delete', {'id': post.id}) }}">Delete</a>
+            </div>
+        {% endfor %}
+    </section>
+    {% endif %}
+
+    {% if published|length > 0 %}
+    <section>
+        <h2>Published posts</h2>
+        {% for post in published %}
+            <div class="post-container">
+                <h3>{{ post.title }}</h3> <p>{{ post.publishTime|date("d/m/Y") }}</p> 
+                <a href="{{ path('post_edit', {'id': post.id}) }}">Edit</a>
+                <a href="{{ path('post_delete', {'id': post.id}) }}">Delete</a>
+            </div>
+        {% endfor %}
+    </section>
+    {% endif %}
+</div>
+{% endblock %}
