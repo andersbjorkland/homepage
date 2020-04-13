@@ -9,13 +9,17 @@
     
     <div id="blog-index">
         <div id="blog-container">
-            {% if image is not empty %}
-                <img src="{{ asset('uploads/images/' ~ image.fileName) }}" alt="Image for {{ post.title }}">
-            {% endif %}
-            <h1 id="blog-title">{{ post.title }}</h1>
-            <p><time>{{ post.publishTime|date("d/m/Y") }}</time></p>
-            <pre>{{ post.text|striptags('<em><strong><i><mark><cite><dfn>')|raw|nl2br }}</pre>
-            <a href="https://twitter.com/intent/tweet?hashtags=webdev&text={{ post.slug }}" target="_blank" rel="noopener noreferrer""><i class="fab fa-twitter"></i></a>
+            <article>
+                {% if image is not empty %}
+                    <img src="{{ asset('uploads/images/' ~ image.fileName) }}" alt="Image for {{ post.title }}">
+                {% endif %}
+                <h1 id="blog-title">{{ post.title }}</h1>
+                <p><time>{{ post.publishTime|date("d/m/Y") }}</time></p>
+                <p>
+                    {{ post.text|striptags('<em><strong><i><mark><cite><dfn>')|raw|nl2br }}
+                </p>
+                <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-url="https://anders.femtearenan.se/blog/{{ post.slug }}" data-lang="en" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </article>
         </div>
         <div id="blog-list">
             {% for postItem in posts %}
