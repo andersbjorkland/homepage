@@ -40,9 +40,11 @@ The purpose of editing .htaccess and provide it to the host server is so it can 
 
 #### Edit composer.json
 Add instructions for Symfony of which directory to treat as the index directory:
+```json
 "extra": {
         "public-dir": "httpd.www"
 }
+```
 
 #### Update .env-file with db-credentials
 Update with correct user and password accordingly:
@@ -91,3 +93,16 @@ origin | destination
 /vendor | httpd.private/
 /templates | httpd.private/
 /var | httpd.private/
+
+### Doctrine
+Make sure to have bin/console added to the production server and the database credentials updated. Then from the project root (httpd.private) run the following command:
+
+```terminal
+php bin/console doctrine:migrations:diff
+```
+This will show if entity mapping has been updated and generate a migrations instruction if updates are present. To run a migration instruction use the following command:
+
+```terminal
+php bin/console doctrine:migrations:migrate
+```
+
