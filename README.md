@@ -7,6 +7,14 @@ The project is built upon Symfony 5 and utilizes Doctrine.
 ## Deployment
 How the project should be deployed depends on the hosting service. 
 
+### Prepare Symfony for deployment
+Update dependencies by running the following composer command in the project directory:
+```
+composer install --no-dev --optimize-autoloader
+```
+
+Read more about deployment on https://symfony.com/doc/current/deployment.html
+
 ### One.com
 Deploying to one.com requires SSH as the project needs to be split into private and public sub-categories.
 
@@ -36,6 +44,15 @@ Add instructions for Symfony of which directory to treat as the index directory:
         "public-dir": "httpd.www"
 }
 
+#### Update .env-file with db-credentials
+Update with correct user and password accordingly:
+```
+DATABASE_URL=mysql://[db-name]:[db-password]@[domain].mysql/[db-name]$
+```
+If APP_ENV is not set for production, do so:
+```
+APP_ENV=prod
+```
 #### Edit index.php
 Since the code base is split up, we need to instruct Symfony of where it can find its instructions. Add the following to the top of the index.php-file:
 
@@ -67,15 +84,10 @@ origin | destination
 /public/* | httpd.www/
 /composer.json | httpd.www/
 /.htaccess | httpd.www/
+/.env | httpd.private/
 /bin | httpd.private/
 /config | httpd.private/
 /src | httpd.private/
 /vendor | httpd.private/
 /templates | httpd.private/
 /var | httpd.private/
-
-#### Update .env-file with db-credentials
-Update with correct user and password accordingly:
-```
-DATABASE_URL=mysql://[db-name]:[db-password]@[domain].mysql/[db-name]$
-```
