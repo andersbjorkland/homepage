@@ -73,3 +73,9 @@ origin | destination
 /vendor | httpd.private/
 /templates | httpd.private/
 /var | httpd.private/
+
+#### Update .env-file with db-credentials
+Update with correct user and password accordingly:
+```
+DATABASE_URL=mysql://[db-name]:[db-password]@[domain].mysql/[db-name]$
+```
