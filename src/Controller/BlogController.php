@@ -291,6 +291,13 @@ class BlogController extends AbstractController
     }
 
     /**
+     * @Route("anders/blog/post/{slug}", name="post_slug_sub")
+     */
+    public function displayPostBySlugSub(Post $post) {
+        return $this->displayPostById($post);
+    }
+
+    /**
      * @Route("/blog/post/{id}", name="post_id")
      */
     public function displayPostById(Post $post) {

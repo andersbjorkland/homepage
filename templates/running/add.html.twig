@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+{% set page = "admin" %}
+{% set adminControl = "running" %}
+
+{% block header %} {% include "_adminControl.html.twig" %} {% endblock %}
+{% block body %}
+    <h2>Add a run</h2>
+    {% for error in errors %}
+        <p>{{ error }}</p>
+    {% endfor %}
+    {% if added %}
+        <p>You have successfully added a run!</p>
+    {% endif %}
+    <div class="form-container">
+    {{ form_start(form) }}
+        {{ form_row(form.date) }}
+        {{ form_row(form.weightPre) }}
+        {{ form_row(form.weightPost) }}
+        {{ form_row(form.distance) }}
+        {{ form_row(form.time) }}
+        {{ form_row(form.type) }}
+    {{ form_end(form) }}
+    </div>
+{% endblock %}
+{% block javascript %}
+<script>
+
+</script>
+{% endblock %}

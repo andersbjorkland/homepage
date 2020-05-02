@@ -458,7 +458,7 @@ article {
     form {
         display: flex;
         flex-direction: column;
-        font-size: 2rem;
+        font-size: 1.4rem;
 
         h2 {
             margin-left: 12.5rem;
@@ -466,8 +466,12 @@ article {
 
         div {
             margin-bottom: 0.5rem;
-            display: flex;
-            flex-direction: row;
+            display: grid;
+            grid-template-columns: 13rem auto;
+
+            div {
+                display: flex;
+            }
         }
 
         #blog_title {
@@ -500,6 +504,11 @@ article {
         p {
             margin-left: 12.5rem;
             font-size: 1rem;
+        }
+
+        button {
+            grid-column: 2;
+            width: 12rem;
         }
 
     }

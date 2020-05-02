@@ -23,7 +23,8 @@ class ImageType extends AbstractType {
                         'mimeTypes' => [
                             'image/jpeg',
                             'image/jpg',
-                            'image/png'
+                            'image/png',
+                            'image/gif'
                         ]
                     ])
                 ]
