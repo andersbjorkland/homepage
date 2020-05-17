@@ -37,14 +37,18 @@ body {
 
 #sidebar {
     min-height: 100vh;
+    width: 4.1rem;
     grid-column: 1/2;
     background-color: #faedfc;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    position: fixed;
+    top: 0;
 
     footer {
-        margin-top: 7rem;
+        position: absolute;
+        bottom: 0;
         grid-column: 1/3;
         background-color: #faedfc;
         display: flex;
@@ -112,7 +116,7 @@ body {
         #nav-container {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 1.4rem;
+            gap: 0.2rem;
         }
     
         .nav-link:hover {
@@ -985,6 +989,9 @@ button.clicked:hover {
         animation-iteration-count: infinite;
     }
 
+    #sidebar {
+        width: 12.3rem;
+    }
     footer {
         grid-column: 1/2;
         grid-row: 2/3;
@@ -1126,6 +1133,7 @@ button.clicked:hover {
 
     #nav-container {
         margin-left: 10px;
+        gap: 1.4rem;
     }
 
     .inner-container-link {
@@ -1197,6 +1205,7 @@ button.clicked:hover {
     .links-container {
         display: flex;
         flex-direction: row;
+        height: 4rem;
     }
 
     #pitch-container p {
@@ -1238,6 +1247,7 @@ button.clicked:hover {
         a {
             text-align: center;
             font-size: 1.2rem;
+            width: 11.5rem;
         }
     }
 }
