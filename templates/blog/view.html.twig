@@ -1,18 +1,34 @@
 {% extends "base.html.twig" %}
 {% set page = "blog" %}
+
 {# {% set adminControl = "blog" %} #}
+{% block metaOgTitle %}{{ post.title }}{% endblock %}
+{% block metaTwitterTitle %}{{ post.title }}{% endblock %}
+{% block metaOgDescription %}{{ post.text|striptags('<em><strong><i><mark><cite><dfn><br />')|raw|slice(0,220) }}{% endblock %}
+{% block metaTwitterDescription %}{{ post.text|striptags('<em><strong><i><mark><cite><dfn><br />')|raw|slice(0,220) }}{% endblock %}
+
 {% block headJS %}
     <script src="https://kit.fontawesome.com/44dcb31394.js" crossorigin="anonymous"></script>
 {% endblock %}
 
 {% block body %}
-    <div id="blog-container">
-        {% if image is not empty %}
-            <img src="{{ asset('uploads/images/' ~ image.fileName) }}" alt="Image for {{ post.title }}">
-        {% endif %}
-        <h1>{{ post.title }}</h1>
-        <p><time>{{ post.publishTime|date("d/m/Y") }}</time></p>
-        <pre>{{ post.text|striptags('<em><strong><i><mark><cite><dfn>')|raw|nl2br }}</pre>
-        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-url="https://femtearenan.se/blog/{{ post.slug }}" data-lang="en" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <div id="blog-index">
+        <div id="blog-container">
+            <article>
+                {% if image is not empty %}
+                    <img src="{{ asset('uploads/images/' ~ image.fileName) }}" alt="Image for {{ post.title }}">
+                {% endif %}
+                <h1 id="blog-title">{{ post.title }}</h1>
+                <p><time>{{ post.publishTime|date("d/m/Y") }}</time></p>
+                <p>
+                    {{ post.text|striptags('<em><strong><i><mark><cite><dfn>')|raw|nl2br }}
+                </p>
+                <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-url="https://femtearenan.se/blog/{{ post.slug }}" data-lang="en" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </article>
+        </div>
+        <div id="blog-list">
+            <div class="post-pages">
+            </div>
+        </div>
     </div>
 {% endblock %}

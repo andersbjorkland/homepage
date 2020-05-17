@@ -326,7 +326,7 @@ class BlogController extends AbstractController
         $postRepository = $this->getDoctrine()->getRepository(Post::class);
         $post = $postRepository->getLatestPost();
 
-        $limit = 1;
+        $limit = 10;
         $numberOfPosts = $postRepository->getCount();
         $numberOfPages = \ceil($numberOfPosts / $limit);
         if ($page > $numberOfPages) {
