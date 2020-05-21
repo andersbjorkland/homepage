@@ -1,0 +1,4 @@
+twig:
+    globals:
+        images_directory: '/customers/a/1/0/femtearenan.se/httpd.www/uploads/images'
+        files_directory: '/customers/a/1/0/femtearenan.se/httpd.www/uploads/files'
