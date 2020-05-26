@@ -175,6 +175,7 @@ h3 {
   margin: 0;
   -ms-flex-item-align: start;
       align-self: flex-start;
+  word-break: break-word;
 }
 
 #blog-container {
