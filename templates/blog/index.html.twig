@@ -10,16 +10,8 @@
 {% block metaOgDescription %}{{ post.text|striptags('<em><strong><i><mark><cite><dfn><br />')|raw|slice(0,220) }}{% endblock %}
 {% block metaTwitterDescription %}{{ post.text|striptags('<em><strong><i><mark><cite><dfn><br />')|raw|slice(0,220) }}{% endblock %}
 
-{% block metaOgImage %}
-    {% if image is not empty %}
-        {{ asset('uploads/images/' ~ image.fileName) }}" alt="Image for {{ post.title }}">
-    {% endif %}
-{% endblock %}
-{% block metaTwitterImage %}
-    {% if image is not empty %}
-        {{ asset('uploads/images/' ~ image.fileName) }}" alt="Image for {{ post.title }}">
-    {% endif %}
-{% endblock %}
+{% block metaOgImage %}{% if image is not empty %}{{ "http://femtearenan.se" ~ asset('uploads/images/' ~ image.fileName) }}{% endif %}{% endblock %}
+{% block metaTwitterImage %}{% if image is not empty %}{{ "http://femtearenan.se" ~ asset('uploads/images/' ~ image.fileName) }}{% endif %}{% endblock %}
 
 {% block body %}
     
