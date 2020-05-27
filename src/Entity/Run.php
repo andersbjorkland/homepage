@@ -4,11 +4,13 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource(
  *     collectionOperations={"get"},
- *     itemOperations={"get"}
+ *     itemOperations={"get"},
+ *     normalizationContext={"groups"={"running:read"}, "swagger_definition_name"="Read"},
  * )
  * @ORM\Entity(repositoryClass="App\Repository\RunRepository")
  */
@@ -23,6 +25,7 @@ class Run
 
     /**
      * @ORM\Column(type="date")
+     * @Groups({"running:read"})
      */
     private $date;
 
@@ -38,21 +41,25 @@ class Run
 
     /**
      * @ORM\Column(type="float")
+     * @Groups({"running:read"})
      */
     private $weightDiff;
 
     /**
      * @ORM\Column(type="float")
+     * @Groups({"running:read"})
      */
     private $distance;
 
     /**
      * @ORM\Column(type="time")
+     * @Groups({"running:read"})
      */
     private $time;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\RunType", inversedBy="runs")
+     * @Groups({"running:read"})
      */
     private $type;
 
