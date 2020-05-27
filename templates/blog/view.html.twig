@@ -6,14 +6,18 @@
 {% block metaTwitterTitle %}{{ post.title }}{% endblock %}
 {% block metaOgDescription %}{{ post.text|striptags('<em><strong><i><mark><cite><dfn><br />')|raw|slice(0,220) }}{% endblock %}
 {% block metaTwitterDescription %}{{ post.text|striptags('<em><strong><i><mark><cite><dfn><br />')|raw|slice(0,220) }}{% endblock %}
-{% if image is not empty %}
-    {% block metaOgImage %}
+
+{% block metaOgImage %}
+    {% if image is not empty %}
         {{ asset('uploads/images/' ~ image.fileName) }}" alt="Image for {{ post.title }}">
-    {% endblock %}
-    {% block metaTwitterImage %}
+    {% endif %}
+{% endblock %}
+{% block metaTwitterImage %}
+    {% if image is not empty %}
         {{ asset('uploads/images/' ~ image.fileName) }}" alt="Image for {{ post.title }}">
-    {% endblock %}
-{% endif %}
+    {% endif %}
+{% endblock %}
+
 
 {% block headJS %}
     <script src="https://kit.fontawesome.com/44dcb31394.js" crossorigin="anonymous"></script>

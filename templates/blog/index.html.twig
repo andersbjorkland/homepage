@@ -5,6 +5,22 @@
 {% block headJS %}
     <script src="https://kit.fontawesome.com/44dcb31394.js" crossorigin="anonymous"></script>
 {% endblock %}
+{% block metaOgTitle %}{{ post.title }}{% endblock %}
+{% block metaTwitterTitle %}{{ post.title }}{% endblock %}
+{% block metaOgDescription %}{{ post.text|striptags('<em><strong><i><mark><cite><dfn><br />')|raw|slice(0,220) }}{% endblock %}
+{% block metaTwitterDescription %}{{ post.text|striptags('<em><strong><i><mark><cite><dfn><br />')|raw|slice(0,220) }}{% endblock %}
+
+{% block metaOgImage %}
+    {% if image is not empty %}
+        {{ asset('uploads/images/' ~ image.fileName) }}" alt="Image for {{ post.title }}">
+    {% endif %}
+{% endblock %}
+{% block metaTwitterImage %}
+    {% if image is not empty %}
+        {{ asset('uploads/images/' ~ image.fileName) }}" alt="Image for {{ post.title }}">
+    {% endif %}
+{% endblock %}
+
 {% block body %}
     
     <div id="blog-index">
