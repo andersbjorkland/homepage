@@ -160,6 +160,7 @@ h3 {
 }
 
 #blog-index {
+  width: 100%;
   -ms-flex-item-align: start;
       align-self: flex-start;
   display: -webkit-box;
@@ -273,6 +274,8 @@ section ul li {
 code {
   font-size: 0.8rem;
   white-space: pre;
+  display: block;
+  overflow-x: scroll;
 }
 
 #intro-about {
