@@ -25,7 +25,7 @@
                 <h1 id="blog-title">{{ post.title }}</h1>
                 <p><time>{{ post.publishTime|date("d/m/Y") }}</time></p>
                 <p>
-                    {{ post.text|striptags('<em><strong><i><mark><cite><dfn><code><ul><li><h2>')|raw|nl2br }}
+                    {{ post.text|striptags('<em><strong><i><mark><cite><dfn><code><ul><li><h2><img>')|raw|nl2br }}
                 </p>
                 <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-url="https://femtearenan.se/blog/post/{{ post.slug|url_encode }}" data-lang="en" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
             </article>
