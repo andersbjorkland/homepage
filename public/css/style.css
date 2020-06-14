@@ -275,7 +275,7 @@ code {
   font-size: 0.8rem;
   white-space: pre;
   display: block;
-  overflow-x: scroll;
+  overflow-x: auto;
 }
 
 #intro-about {
