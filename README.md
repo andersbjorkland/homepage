@@ -33,7 +33,6 @@ The purpose of editing .htaccess and provide it to the host server is so it can 
     RewriteCond %{REQUEST_FILENAME} !-f
 
     # Change below before deploying to production
-    #RewriteRule ^(.*)$ /index.php [QSA,L]
     RewriteRule ^(.*)$ /index.php [QSA,L]
 </IfModule>
 ```
@@ -67,8 +66,8 @@ We need to update Symfony parameters in the services.yaml-file. the kernel-path 
 
 ```yaml
 parameters:
-    images_directory: '/customers/a/1/0/femtearenan.se/httpd.www/uploads/images'
-    files_directory: '/customers/a/1/0/femtearenan.se/httpd.www/uploads/files'
+    images_directory: '/[]/httpd.www/uploads/images'
+    files_directory: '/[]/httpd.www/uploads/files'
 ```
 
 #### Edit /config/packages/twig.yaml
@@ -76,8 +75,8 @@ We need to update Twig parameters in the twig.yaml-file. There are two parameter
 
 ```yaml
 globals:
-    images_directory: '/customers/a/1/0/femtearenan.se/httpd.www/uploads/images'
-    files_directory: '/customers/a/1/0/femtearenan.se/httpd.www/uploads/files'
+    images_directory: '/[]/httpd.www/uploads/images'
+    files_directory: '/[]/httpd.www/uploads/files'
 ```
 
 #### Split files between private and public directories
