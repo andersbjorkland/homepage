@@ -2,27 +2,27 @@
 
 namespace App\Repository;
 
-use App\Entity\Post;
+use App\Entity\BlogPost;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
 use \DateTime;
 
 /**
- * @method Post|null find($id, $lockMode = null, $lockVersion = null)
- * @method Post|null findOneBy(array $criteria, array $orderBy = null)
- * @method Post[]    findAll()
- * @method Post[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method BlogPost|null find($id, $lockMode = null, $lockVersion = null)
+ * @method BlogPost|null findOneBy(array $criteria, array $orderBy = null)
+ * @method BlogPost[]    findAll()
+ * @method BlogPost[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class PostRepository extends ServiceEntityRepository
+class BlogPostRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Post::class);
+        parent::__construct($registry, BlogPost::class);
     }
 
     /**
-     * @return Post[] Returns an array of Post objects
+     * @return BlogPost[] Returns an array of BlogPost objects
      */
     public function getLatestPaginated($page, $limit)
     {
@@ -40,7 +40,7 @@ class PostRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return Post[] Returns an array of Post objects
+     * @return BlogPost[] Returns an array of BlogPost objects
      */
     public function getUnpublished()
     {
@@ -55,7 +55,7 @@ class PostRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return Post Returns the latest published Post object
+     * @return BlogPost Returns the latest published BlogPost object
      */
     public function getLatestPost()
     {
@@ -66,8 +66,14 @@ class PostRepository extends ServiceEntityRepository
             ->orderBy('b.id', 'DESC')
             ->setMaxResults(1)
             ->getQuery()
-            ->getSingleResult()
+            ->getResult()
         ;
+        dump($post);
+        if (count($post) > 0) {
+            $post = $post[0];
+        } else {
+            $post = null;
+        }
 
         return $post;
     }

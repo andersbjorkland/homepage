@@ -10,6 +10,11 @@ $brightBlue: #60C5FC;
 $solidBlue: #6077FC;
 $purple: #9760FC;
 $darkPurple: hsl(261, 96%, 38%);
+$orange: #f07305;
+
+$primaryBtnColor: $solidBlue;
+$secondaryBtnColor: $purple;
+$dangerColor: $orange;
 
 $sans: 'Sniglet', 'Segoe UI', Tahoma, Verdana, sans-serif;
 $rale: 'Raleway', Arial, Helvetica, sans-serif;
@@ -235,7 +240,7 @@ figure {
 section {
     margin-bottom: 2rem;
     max-width: 30rem;
-    padding: 0rem 1rem;
+    padding: 0 1rem;
 
     ul {
         list-style-type: circle;
@@ -279,7 +284,7 @@ code {
         align-self: center;
 
         p {
-            margin-top: 0rem;
+            margin-top: 0;
             margin-bottom: 0.5rem;
             font-size: 0.8rem;
             text-align: center;
@@ -288,7 +293,7 @@ code {
     #about-eye {
         display: none;
         position: relative;
-        left: 0rem;
+        left: 0;
         height: 10rem;
         width: 10rem;
         background-color: #333;
@@ -325,7 +330,7 @@ article {
     width: 82px;
     height: 67px;
 
-    box-shadow: 0px 4px 13px -2px rgba(0,0,0, 0.18);
+    box-shadow: 0 4px 13px -2px rgba(0,0,0, 0.18);
 
     .link-text {
         display: none;
@@ -625,7 +630,7 @@ header {
     letter-spacing: 0.1rem;
     margin-top: 4rem;
     p {
-        margin: 0px;
+        margin: 0;
         position: relative;
     }
 
@@ -716,7 +721,7 @@ header {
     animation-fill-mode: forwards;
 
     p {
-        margin: 0px;
+        margin: 0;
     }
 }
 
@@ -762,8 +767,28 @@ header {
     border-radius: 4px;
     border: none;
     box-shadow: 2px 1px 15px 4px rgba(0,0,0,0.14);
-    background-color: $solidBlue;
+    background-color: $primaryBtnColor;
     color: white;
+}
+
+.btn.secondary {
+    font-size: 1rem;
+    width: fit-content;
+    background-color: $secondaryBtnColor;
+    padding: 0.3rem;
+}
+
+.btn.danger {
+    font-size: 1rem;
+    width: fit-content;
+    background-color: $dangerColor;
+    padding: 0.3rem;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
 }
 
 .clicked {
@@ -827,7 +852,28 @@ button {
 }
 
 #header {
-    margin-top: 0px;
+    margin-top: 0;
+}
+
+/*******************************
+            BLOG
+*******************************/
+#image-list-container {
+    display: flex;
+    flex-direction: column;
+
+    ol li div div {
+        display: grid;
+        grid-template-columns: 10rem 1fr;
+
+        label {
+            text-align: left;
+        }
+    }
+
+    div {
+        display: initial;
+    }
 }
 
 
@@ -859,7 +905,7 @@ button {
             color: $darkGrey;
             text-decoration: none;
             border-radius: 5px;
-            box-shadow: 0px 4px 13px -2px rgba(0,0,0, 0.18);
+            box-shadow: 0 4px 13px -2px rgba(0,0,0, 0.18);
 
             h2 {
                 color: $darkPurple;
@@ -919,7 +965,7 @@ button.clicked:hover {
         .inner-container-link {
             height: 43.6px;
         
-            box-shadow: 0px 4px 13px -2px rgba(0,0,0, 0.18);
+            box-shadow: 0 4px 13px -2px rgba(0,0,0, 0.18);
         
             .link-text {
                 display: none;
@@ -937,7 +983,7 @@ button.clicked:hover {
         padding-left: 1rem;
 
         header h1 {
-            margin: 1rem 0rem 1rem 0rem;
+            margin: 1rem 0 1rem 0;
         }
 
         header, #pitch-container, #cloud-container {
@@ -953,7 +999,7 @@ button.clicked:hover {
             width: 16rem;
 
             p {
-                margin-top: 0rem;
+                margin-top: 0;
             }
         }
 
@@ -1045,7 +1091,7 @@ button.clicked:hover {
             opacity: 0.8;
         }
         100% {
-            left: 0vw;
+            left: 0;
             opacity: 0;
         }
     }
@@ -1070,8 +1116,8 @@ button.clicked:hover {
     
     @keyframes turn-right {
         0% {
-            top: 0rem;
-            right: 0rem;
+            top: 0;
+            right: 0;
             transform: rotate(0deg);
         }
         100% {
@@ -1087,15 +1133,15 @@ button.clicked:hover {
             transform: rotate(38deg);
         }
         100% {
-            top: 0rem;
-            right: 0rem;
+            top: 0;
+            right: 0;
             transform: rotate(0deg);
         }
     }
     @keyframes header-turn-right {
         0% {
-            top: 0rem;
-            right: 0rem;
+            top: 0;
+            right: 0;
             transform: rotate(0deg);
         }
         100% {
@@ -1111,8 +1157,8 @@ button.clicked:hover {
             transform: rotate(38deg);
         }
         100% {
-            top: 0rem;
-            right: 0rem;
+            top: 0;
+            right: 0;
             transform: rotate(0deg);
         }
     }
@@ -1192,7 +1238,7 @@ button.clicked:hover {
             background-color: #fff;
         }
         100% {
-            left: 0px;
+            left: 0;
             background-color: #b0fcf1;
         }
     }
@@ -1214,7 +1260,7 @@ button.clicked:hover {
     }
 
     #pitch-container p {
-        margin: 0px;
+        margin: 0;
     }
 
     p.pitch2 span.blue{
@@ -1289,3 +1335,4 @@ button.clicked:hover {
         margin-left: 0.5rem;
     }
 }
+

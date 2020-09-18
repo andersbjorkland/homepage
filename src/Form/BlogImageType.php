@@ -2,38 +2,43 @@
 
 namespace App\Form;
 
-use App\Entity\Image;
+use App\Entity\BlogImage;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
 
-class ImageType extends AbstractType {
-    public function buildForm(FormBuilderInterface $builder, array $options) {
+class BlogImageType extends AbstractType
+{
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
         $builder
             ->add('image', FileType::class, [
-                'label' => 'Choose a file',
+                'label' => 'Add image',
                 'mapped' => false,
                 'required' => false,
                 'constraints' => [
                     new File([
-                        'maxSize' => '5M',
+                        'maxSize' => '4096k',
                         'mimeTypes' => [
-                            'image/jpeg',
-                            'image/jpg',
-                            'image/png',
-                            'image/gif'
+                            'image/*'
                         ]
                     ])
                 ]
-            ]);
+            ])
+            ->add('alt', TextType::class, [
+                'mapped' => false
+            ])
+            ->add('subtext')
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Image::class,
+            'data_class' => BlogImage::class,
         ]);
     }
 }

@@ -25,13 +25,24 @@
                 <h1 id="blog-title">{{ post.title }}</h1>
                 <p><time>{{ post.publishTime|date("d/m/Y") }}</time></p>
                 <p>
-                    {{ post.text|striptags('<em><strong><i><mark><cite><dfn><code><ul><li><h2><img><a><p>')|raw|nl2br }}
+                    {{ text|striptags('<em><strong><i><mark><cite><dfn><code><ul><li><h2><img><a><p>')|raw|nl2br }}
                 </p>
                 <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-url="https://femtearenan.se/blog/post/{{ post.slug|url_encode }}" data-lang="en" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                {% include '_blogControls.html.twig' %}
             </article>
         </div>
         <div id="blog-list">
+            {% for postItem in posts %}
+                <div class="post-container">
+                    <a href="{{ path('post_show', {'slug': postItem.slug}) }}"><h3>{{ postItem.title }}</h3> <p>{{ postItem.publishTime|date("d/m/Y") }}</p></a>
+                </div>
+            {% endfor %}
             <div class="post-pages">
+                {% if pages > 1 %}
+                    {% for i in 1 .. pages %}
+                        <a href="{{ path('post_page', {'page': i}) }}">{{ i }}</a>
+                    {% endfor %}
+                {% endif %}
             </div>
         </div>
     </div>

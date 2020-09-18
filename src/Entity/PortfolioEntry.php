@@ -32,7 +32,7 @@ class PortfolioEntry
     private $tech;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Image", inversedBy="portfolioEntries")
+     * @ORM\ManyToOne(targetEntity="Image")
      */
     private $image;
 

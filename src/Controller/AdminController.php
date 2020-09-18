@@ -2,23 +2,9 @@
 
 namespace App\Controller;
 
-use App\Entity\Image;
-use App\Entity\PortfolioEntry;
-use App\Entity\Post;
-use App\Form\ImageType;
-use App\Form\PortfolioEntryType;
-
-use Doctrine\ORM\EntityManagerInterface;
-
+use App\Entity\BlogPost;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\HttpFoundation\File\Exception\FileException;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\String\Slugger\SluggerInterface;
-
-use \RuntimeException;
 
 class AdminController extends AbstractController
 {
@@ -27,7 +13,7 @@ class AdminController extends AbstractController
      */
     public function index()
     {
-        $postRepository = $this->getDoctrine()->getRepository(Post::class);
+        $postRepository = $this->getDoctrine()->getRepository(BlogPost::class);
         $unpublished = $postRepository->getUnpublished();
         $published = $postRepository->getLatestPaginated(1, 10);
 

@@ -5,10 +5,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %}Effective and unique websites - Anders Björkland!{% endblock %}</title>
         <link href="https://fonts.googleapis.com/css?family=Raleway|Sniglet&display=swap" rel="stylesheet">
-        {% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/style.min.css')}}">{% endblock %}
+        {% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/style.css')}}">{% endblock %}
         <link rel="icon" 
         type="image/png" 
         href="{{ asset('favicon.svg') }}">
+        {% block meta %}
         <meta property="og:title" content="{% block metaOgTitle %}Effective and unique websites - Anders Björkland!{% endblock %}">
         <meta property="og:description" content="{% block metaOgDescription %}Hi! I am Anders. This is my home on the web. I love to code, and so I do it daily. I primarily code in PHP for server side magic and turn to React.js when client side interaction should be - INTERACTIVE. Follow my journey as I delve deeper into the world of code.{% endblock %}">
         <meta property="og:image" content="{% block metaOgImage %}http://femtearenan.se/images/femtearenan.png{% endblock %}">
@@ -17,10 +18,14 @@
         <meta name="twitter:description" content="{% block metaTwitterDescription %}Hi! I am Anders. This is my home on the web. I love to code, and so I do it daily. I primarily code in PHP for server side magic and turn to React.js when client side interaction should be - INTERACTIVE. Follow my journey as I delve deeper into the world of code.{% endblock %}">
         <meta name="twitter:image" content="{% block metaTwitterImage %}http://femtearenan.se/images/femtearenan.png{% endblock %}">
         <meta name="twitter:card" content="summary_large_image">
+        {% endblock %}
         {% block headJS %}{% endblock %}
     </head>
     <body>
         <div id="sidebar">
+            {% if page is not defined %}
+                {% set page = "" %}
+            {% endif %}
             <nav>
 
                 <a id="logo-link" href="/">

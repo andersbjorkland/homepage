@@ -38,13 +38,13 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Post", mappedBy="user", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\BlogPost", mappedBy="user", orphanRemoval=true)
      */
-    private $posts;
+    private $blogPosts;
 
     public function __construct()
     {
-        $this->posts = new ArrayCollection();
+        $this->blogPosts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -126,30 +126,30 @@ class User implements UserInterface
     }
 
     /**
-     * @return Collection|Post[]
+     * @return Collection|BlogPost[]
      */
-    public function getPosts(): Collection
+    public function getBlogPosts(): Collection
     {
-        return $this->posts;
+        return $this->blogPosts;
     }
 
-    public function addPost(Post $post): self
+    public function addBlogPost(BlogPost $blogPost): self
     {
-        if (!$this->posts->contains($post)) {
-            $this->posts[] = $post;
-            $post->setUser($this);
+        if (!$this->blogPosts->contains($blogPost)) {
+            $this->blogPosts[] = $blogPost;
+            $blogPost->setUser($this);
         }
 
         return $this;
     }
 
-    public function removePost(Post $post): self
+    public function removeBlogPost(BlogPost $blogPost): self
     {
-        if ($this->posts->contains($post)) {
-            $this->posts->removeElement($post);
+        if ($this->blogPosts->contains($blogPost)) {
+            $this->blogPosts->removeElement($blogPost);
             // set the owning side to null (unless already changed)
-            if ($post->getUser() === $this) {
-                $post->setUser(null);
+            if ($blogPost->getUser() === $this) {
+                $blogPost->setUser(null);
             }
         }
 
