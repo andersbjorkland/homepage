@@ -14,13 +14,20 @@
 <section id="portfolio-cards-container">
     <div id="portfolio-cards">
         {% for project in projects %}
-            <a href="{{ project.link }}" class="card" target="_blank">
+            <div class="card">
                 <div class="inner-card">
-                    <img src="{{ asset('uploads/images/' ~ project.image.fileName) }}" alt="{{ project.name }}">
+                    <img src="{{ asset('uploads/images/' ~ project.image.fileName) }}" alt="{{ project.image.alt }}">
                     <h2>{{ project.name }}</h2>
                     <p class="tag-line">{{ project.textDescription }}</p>
+                    <p><a href="{{ project.link }}" target="_blank" class="visible-link">Link</a></p>
                 </div>
-            </a>
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <div class="flex-row">
+                        <a class="btn secondary no-link" href="{{ path('portfolio_edit', {'id': project.id}) }}">Edit</a>
+                        <a class="btn danger no-link" href="{{ path('portfolio_delete', {'id': project.id}) }}">Delete</a>
+                    </div>
+                {% endif %}
+            </div>
         {% endfor %}
     </div>
 </section>

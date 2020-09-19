@@ -415,6 +415,9 @@ article .wp-block-gallery ul {
 .form-container form h2 {
   margin-left: 12.5rem;
 }
+.form-container form img {
+  width: 12rem;
+}
 .form-container form div {
   margin-bottom: 0.5rem;
   display: grid;
@@ -422,6 +425,33 @@ article .wp-block-gallery ul {
 }
 .form-container form div div {
   display: flex;
+}
+.form-container form #blog_post_blogImages {
+  flex-direction: column;
+}
+.form-container form #blog_post_blogImages li > div {
+  display: flex;
+  flex-direction: column;
+}
+.form-container form #blog_post_blogImages li {
+  margin-bottom: 1rem;
+}
+.form-container form #blog_post_blogImages li div > div:nth-child(1) {
+  flex-direction: column;
+}
+.form-container form #blog_post_blogImages li p {
+  margin-left: 0;
+  margin-right: 0.5rem;
+  text-align: left;
+}
+.form-container form #blog_post_blogImages li label {
+  text-align: left;
+}
+.form-container form #blog_post_blogImages img {
+  height: 12rem;
+}
+.form-container form #blog_post_blogImages textarea {
+  height: 5rem;
 }
 .form-container form #blog_title {
   font-size: 1.8rem;
@@ -451,6 +481,11 @@ article .wp-block-gallery ul {
 .form-container form button {
   grid-column: 2;
   width: 12rem;
+}
+
+.image-text {
+  font-style: italic;
+  font-size: 0.9rem;
 }
 
 [type=submit] {
@@ -800,17 +835,17 @@ button {
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
 }
-#portfolio-cards-container #portfolio-cards a {
+#portfolio-cards-container #portfolio-cards .card {
   padding: 1rem;
   color: #5a5a5a;
   text-decoration: none;
   border-radius: 5px;
   box-shadow: 0 4px 13px -2px rgba(0, 0, 0, 0.18);
 }
-#portfolio-cards-container #portfolio-cards a h2 {
+#portfolio-cards-container #portfolio-cards .card h2 {
   color: #4504be;
 }
-#portfolio-cards-container #portfolio-cards a:hover {
+#portfolio-cards-container #portfolio-cards .card:hover {
   animation: card-hover;
   animation-duration: 0.5s;
   animation-fill-mode: forwards;
@@ -825,6 +860,14 @@ button {
     color: #060606;
   }
 }
+a.no-link {
+  text-decoration: none;
+}
+
+a.link {
+  text-decoration: underline;
+}
+
 button:hover {
   cursor: pointer;
   background-color: #0528f0;

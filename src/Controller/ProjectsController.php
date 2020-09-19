@@ -14,11 +14,4 @@ class ProjectsController extends AbstractController {
         return $this->render('index.html.twig');
     }
 
-    /**
-     * @Route("/anders/projects")
-     */
-    public function subIndex() {
-        return $this->index();
-    }
-
 }

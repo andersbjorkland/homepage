@@ -1,0 +1,49 @@
+{% extends "base.html.twig" %}
+{% set page = "admin" %}
+{% set adminControl = "portfolio" %}
+
+{% block header %} {% include "_adminControl.html.twig" %} {% endblock %}
+{% block body %}
+    <h1>Edit a project</h1>
+    {% for error in errors %}
+        <p>{{ error }}</p>
+    {% endfor %}
+    {% if edited %}
+        <p>You have successfully edited a project to your portfolio!</p>
+    {% endif %}
+    <div class="form-container">
+    {{ form_start(form) }}
+        {{ form_row(form.name) }}
+        {% if portfolioEntry.image is not empty %}
+            <div>
+                <label>Current Image</label>
+                <img src="{{ asset('uploads/images/' ~ portfolioEntry.image.fileName) }}" alt="{{ portfolioEntry.image.alt }}">
+            </div>
+            <div>
+                <label>Image file</label>
+                <span>{{ portfolioEntry.image.fileName }}</span>
+            </div>
+        {% endif %}
+        {{ form_row(form.image) }}
+        {{ form_row(form.imageAlt) }}
+        {{ form_row(form.textDescription) }}
+        {{ form_row(form.link) }}
+        {{ form_row(form.file) }}
+        {{ form_row(form.save) }}
+
+        <div id="tech">
+            
+        </div>
+        <div><span></span><a class="btn danger no-link" href="{{ path('portfolio_delete', {'id': portfolioEntry.id}) }}">Delete</a></div>
+
+        {{ form_end(form) }}
+
+    </div>
+{% endblock %}
+{% block javascripts %}
+<script>
+    let imageAltInput = document.getElementById('portfolio_entry_imageAlt');
+    imageAltInput.setAttribute("value", "{{ portfolioEntry.image.alt }}");
+    console.log("{{ portfolioEntry.image.alt }}");
+</script>
+{% endblock %}

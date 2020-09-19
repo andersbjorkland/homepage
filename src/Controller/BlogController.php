@@ -113,23 +113,16 @@ class BlogController extends AbstractController
         $text = $blogPost->getText();
         $filePath = $_SERVER['APP_ENV'] === 'dev' ? '/uploads/images' : $this->getParameter('images_view');
         $blogImages = $blogPost->getBlogImages();
-        $imageIndex = 0;
+        $imageIndex = 1;
         foreach ($blogImages as $blogImage) {
-            $found = false;
-            for ($i = 0; $i < 25; $i++) {
-                $pattern = '/\|' . $imageIndex . '\|/';
-                if (strpos($text, '|' . $imageIndex . '|')) {
-                    $found = true;
-                    $replace = '<div class="img-container"> <img src="' . $filePath . '/'
-                        . $blogImage->getImage()->getFileName()
-                        . '" alt="' . $blogImage->getImage()->getAlt() . '" /><p>'. $blogImage->getSubtext() .'</p></div>';
-                    $text = preg_replace($pattern, $replace, $text);
-                }
-                $imageIndex++;
-                if ($found) {
-                    break;
-                }
+            $pattern = '/\|' . $imageIndex . '\|/';
+            if (strpos($text, '|' . $imageIndex . '|')) {
+                $replace = '<div class="img-container"> <img src="' . $filePath . '/'
+                    . $blogImage->getImage()->getFileName()
+                    . '" alt="' . $blogImage->getImage()->getAlt() . '" /><p class="image-text">'. $blogImage->getSubtext() .'</p></div>';
+                $text = preg_replace($pattern, $replace, $text);
             }
+            $imageIndex++;
         }
         $image = null;
         if (count($blogImages) > 0) {
@@ -323,23 +316,16 @@ class BlogController extends AbstractController
         $text = $post->getText();
         $filePath = $_SERVER['APP_ENV'] === 'dev' ? '/uploads/images' : $this->getParameter('images_view');
         $blogImages = $post->getBlogImages();
-        $imageIndex = 0;
+        $imageIndex = 1;
         foreach ($blogImages as $blogImage) {
-            $found = false;
-            for ($i = 0; $i < 25; $i++) {
-                $pattern = '/\|' . $imageIndex . '\|/';
-                if (strpos($text, '|' . $imageIndex . '|')) {
-                    $found = true;
-                    $replace = '<div class="img-container"> <img src="' . $filePath . '/'
-                        . $blogImage->getImage()->getFileName()
-                        . '" alt="' . $blogImage->getImage()->getAlt() . '" /><p>'. $blogImage->getSubtext() .'</p></div>';
-                    $text = preg_replace($pattern, $replace, $text);
-                }
-                $imageIndex++;
-                if ($found) {
-                    break;
-                }
+            $pattern = '/\|' . $imageIndex . '\|/';
+            if (strpos($text, '|' . $imageIndex . '|')) {
+                $replace = '<div class="img-container"> <img src="' . $filePath . '/'
+                    . $blogImage->getImage()->getFileName()
+                    . '" alt="' . $blogImage->getImage()->getAlt() . '" /><p class="image-text">'. $blogImage->getSubtext() .'</p></div>';
+                $text = preg_replace($pattern, $replace, $text);
             }
+            $imageIndex++;
         }
 
         return $this->render('blog/index.html.twig', [

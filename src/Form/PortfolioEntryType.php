@@ -3,7 +3,6 @@
 namespace App\Form;
 
 use App\Entity\PortfolioEntry;
-use App\Form\ImageType;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -30,6 +29,10 @@ class PortfolioEntryType extends AbstractType {
                         ]
                     ])
                 ]
+            ])
+            ->add('imageAlt', TextType::class, [
+                'label' => "Image Alt",
+                'mapped' => false
             ])
             ->add('textDescription', TextType::class, ['label' => "Description"])
             ->add('link', TextType::class, ['label' => "Link"])

@@ -68,7 +68,6 @@ class BlogPostRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult()
         ;
-        dump($post);
         if (count($post) > 0) {
             $post = $post[0];
         } else {
