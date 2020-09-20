@@ -412,6 +412,15 @@ form ul li {
   padding: 1rem;
 }
 
+.categories {
+  margin-bottom: 1rem;
+}
+.categories p {
+  background-color: #ececec;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.6rem;
+}
+
 .form-container {
   width: 100%;
   color: #5a5a5a;

@@ -27,6 +27,7 @@
                 <p>
                     {{ text|striptags('<em><strong><i><mark><cite><dfn><code><ul><li><h2><img><a><p>')|raw|nl2br }}
                 </p>
+                {% include 'category/_listing.html.twig' with {'categories': post.categories} %}
                 <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-url="https://femtearenan.se/blog/post/{{ post.slug|url_encode }}" data-lang="en" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                 {% include '_blogControls.html.twig' %}
             </article>
