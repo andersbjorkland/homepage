@@ -23,11 +23,4 @@ class AdminController extends AbstractController
             'published' => $published,
         ]);
     }
-
-    /**
-     * @Route("/anders/admin")
-     */
-    public function subIndex() {
-        return $this->index();
-    }
 }
