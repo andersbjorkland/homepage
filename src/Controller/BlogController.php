@@ -169,23 +169,50 @@ class BlogController extends AbstractController
         }
 
         $form = $this->createForm(BlogPostType::class, $blogPost);
-
         $form->handleRequest($request);
 
         $filePath = $_SERVER['APP_ENV'] === 'dev' ? 'uploads/images' : $this->getParameter('images_view');
 
-
         if ($form->isSubmitted() && $form->isValid()) {
             $entitymanager = $this->getDoctrine()->getManager();
 
+            $prevCategories = $blogPost->getCategories();
+            $currentCategories = $form->get('categories');
+
+            // Remove categories no longer present
+            foreach ($prevCategories as $prevCategory) {
+                $remove = true;
+                foreach ($currentCategories as $currentCategory) {
+                    if ($currentCategory->get('name')->getData() === $prevCategory->getName()) {
+                        $remove = false;
+                    }
+                }
+
+                if ($remove) {
+                    $blogPost->removeCategory($prevCategory);
+                    $prevCategory->removeBlogPost($blogPost);
+                    $entitymanager->persist($prevCategory);
+                    $entitymanager->persist($blogPost);
+                }
+            }
+
+            // Add any new categories
             foreach ($form->get('categories') as $category) {
-                $categoryEntity = new Category();
-                $categoryName = $category->get('name')->getData();
-                $categoryEntity->setName($categoryName);
+                $add = true;
 
-                $entitymanager->persist($categoryEntity);
-
-                $blogPost->addCategory($categoryEntity);
+                foreach ($blogPost->getCategories() as $prevCategory) {
+                    if ($category->get('name')->getData() === $prevCategory->getName()) {
+                        $add = false;
+                    }
+                }
+                if ($add) {
+                    $categoryEntity = new Category();
+                    $categoryName = $category->get('name')->getData();
+                    $categoryEntity->setName($categoryName);
+                    $categoryEntity->addBlogPost($blogPost);
+                    $entitymanager->persist($categoryEntity);
+                    $blogPost->addCategory($categoryEntity);
+                }
             }
 
 
@@ -273,11 +300,6 @@ class BlogController extends AbstractController
 
                     $blogPost->addBlogImage($blogImageEntity);
                 }
-            }
-
-            foreach ($blogPost->getCategories() as $category) {
-                $category->addBlogPost($blogPost);
-                $entitymanager->persist($category);
             }
 
             $entitymanager->flush();

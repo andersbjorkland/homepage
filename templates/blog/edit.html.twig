@@ -141,11 +141,11 @@
 
         {% if  blogPost.categories is not empty %}
             let categoryname = '';
-            let index = 1;
+            let categoryIndex = 1;
             {% for category in blogPost.categories %}
                 categoryname = '{{ category.name }}';
-                setCategoryForm(index, categoryname);
-                index++;
+                setCategoryForm(categoryIndex, categoryname);
+                categoryIndex++;
             {% endfor %}
         {% endif %}
 
