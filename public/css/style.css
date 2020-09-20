@@ -412,6 +412,11 @@ form ul li {
   padding: 1rem;
 }
 
+.controls {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
 .categories {
   margin-bottom: 1rem;
 }
