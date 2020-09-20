@@ -18,20 +18,18 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 use function ceil;
 
 
-/**
- * @Route("/blog")
- */
+
 class BlogController extends AbstractController
 {
     /**
-     * @Route("/", name="post_index")
+     * @Route("/blog/", name="post_index")
      */
     public function index() {
         return $this->indexByPage(1);
     }
 
     /**
-     * @Route("/add", name="post_add", methods={"GET", "POST"})
+     * @Route("/admin/blog/add", name="post_add", methods={"GET", "POST"})
      */
     public function addPost(Request $request, SluggerInterface $slugger)
     {
@@ -115,7 +113,7 @@ class BlogController extends AbstractController
     }
 
     /**
-     * @Route("/view/{slug}", name="post_show")
+     * @Route("/blog/{slug}", name="post_show")
      */
     public function show(BlogPost $blogPost, BlogPostRepository $postRepository)
     {
@@ -157,7 +155,7 @@ class BlogController extends AbstractController
     }
 
     /**
-     * @Route("/view/{slug}/edit", name="post_edit", methods={"GET", "POST"})
+     * @Route("/admin/blog/{slug}/edit", name="post_edit", methods={"GET", "POST"})
      */
     public function editPost(BlogPost $blogPost, Request $request, SluggerInterface $slugger)
     {
@@ -314,7 +312,7 @@ class BlogController extends AbstractController
     }
 
     /**
-     * @Route("/view/{slug}/release", name="post_release", methods={"GET", "POST"})
+     * @Route("/admin/blog/{slug}/release", name="post_release", methods={"GET", "POST"})
      */
     public function releasePost(BlogPost $blogPost, Request $request)
     {
@@ -344,7 +342,7 @@ class BlogController extends AbstractController
     }
 
     /**
-     * @Route("/{page}", name="post_page")
+     * @Route("/blog/{page}", name="post_page")
      */
     public function indexByPage($page) {
         $postRepository = $this->getDoctrine()->getRepository(BlogPost::class);
@@ -390,7 +388,7 @@ class BlogController extends AbstractController
     }
 
     /**
-     * @Route("/blog/delete/{id}", name="post_delete")
+     * @Route("/admin/blog/delete/{id}", name="post_delete")
      */
     public function delete(Request $request, BlogPost $post) {
         $removed = false;
