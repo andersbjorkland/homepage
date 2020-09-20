@@ -42,8 +42,11 @@ class BlogController extends AbstractController
             $entitymanager = $this->getDoctrine()->getManager();
 
             foreach ($form->get('categories') as $category) {
-                $categoryEntity = new Category();
                 $categoryName = $category->get('name')->getData();
+                $categoryEntity = $entitymanager->getRepository(Category::class)->findOneByName($categoryName);
+                if (null === $categoryEntity) {
+                    $categoryEntity = new Category();
+                }
                 $categoryEntity->setName($categoryName);
 
                 $entitymanager->persist($categoryEntity);
@@ -204,8 +207,13 @@ class BlogController extends AbstractController
                     }
                 }
                 if ($add) {
-                    $categoryEntity = new Category();
                     $categoryName = $category->get('name')->getData();
+                    $categoryEntity = $entitymanager->getRepository(Category::class)->findOneByName($categoryName);
+
+                    if (null === $categoryEntity) {
+                        $categoryEntity = new Category();
+                    }
+
                     $categoryEntity->setName($categoryName);
                     $categoryEntity->addBlogPost($blogPost);
                     $entitymanager->persist($categoryEntity);
