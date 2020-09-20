@@ -1,0 +1,4 @@
+<div id="blog-index">
+    {% include 'blog/_blog-content.html.twig' with {'post': post,  'image': image, 'test': text} %}
+    {% include 'blog/_blog-list.html.twig' with {'posts': posts} %}
+</div>

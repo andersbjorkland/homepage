@@ -143,7 +143,7 @@ class BlogController extends AbstractController
             $image = $blogImages[0]->getImage();
         }
 
-        return $this->render('blog/view.html.twig   ', [
+        return $this->render('blog/view.html.twig', [
             "post" => $blogPost,
             "image" => $image,
             "title" => $blogPost->getTitle(),
@@ -320,6 +320,7 @@ class BlogController extends AbstractController
     {
         $messages = [];
 
+        // In case of lazy loading
         $blogImages = $blogPost->getBlogImages();
         foreach ($blogImages as $blogImage) {
             $image = $blogImage->getImage();
@@ -360,7 +361,7 @@ class BlogController extends AbstractController
 
         $image = null;
         if (null !== $post && null !== $post->getBlogImages()) {
-            $image = $post->getBlogImages()[0];
+            $image = $post->getBlogImages()[0]->getImage();
         }
 
         $text = $post->getText();
@@ -380,7 +381,7 @@ class BlogController extends AbstractController
 
         return $this->render('blog/index.html.twig', [
             'post' => $post,
-            'blogContent' => $text,
+            'text' => $text,
             'posts' => $posts,
             'image' => $image,
             'pages' => $numberOfPages,
