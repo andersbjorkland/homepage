@@ -403,6 +403,15 @@ article .wp-block-gallery ul {
   box-shadow: 5px 5px 8px #ddd;
 }
 
+#category-list-container {
+  display: flex;
+}
+
+form ul li {
+  list-style-type: none;
+  padding: 1rem;
+}
+
 .form-container {
   width: 100%;
   color: #5a5a5a;
@@ -426,31 +435,39 @@ article .wp-block-gallery ul {
 .form-container form div div {
   display: flex;
 }
-.form-container form #blog_post_blogImages {
+.form-container form #blog_post_categories li {
+  display: flex;
+  gap: 1rem;
+}
+.form-container form #blog_post_categories li button {
+  font-size: 0.7rem;
+  height: 1.5rem;
+}
+.form-container form #blog_post_blogImages, .form-container form #blog_post_categories {
   flex-direction: column;
 }
-.form-container form #blog_post_blogImages li > div {
+.form-container form #blog_post_blogImages li > div, .form-container form #blog_post_categories li > div {
   display: flex;
   flex-direction: column;
 }
-.form-container form #blog_post_blogImages li {
+.form-container form #blog_post_blogImages li, .form-container form #blog_post_categories li {
   margin-bottom: 1rem;
 }
-.form-container form #blog_post_blogImages li div > div:nth-child(1) {
+.form-container form #blog_post_blogImages li div > div:nth-child(1), .form-container form #blog_post_categories li div > div:nth-child(1) {
   flex-direction: column;
 }
-.form-container form #blog_post_blogImages li p {
+.form-container form #blog_post_blogImages li p, .form-container form #blog_post_categories li p {
   margin-left: 0;
   margin-right: 0.5rem;
   text-align: left;
 }
-.form-container form #blog_post_blogImages li label {
+.form-container form #blog_post_blogImages li label, .form-container form #blog_post_categories li label {
   text-align: left;
 }
-.form-container form #blog_post_blogImages img {
+.form-container form #blog_post_blogImages img, .form-container form #blog_post_categories img {
   height: 12rem;
 }
-.form-container form #blog_post_blogImages textarea {
+.form-container form #blog_post_blogImages textarea, .form-container form #blog_post_categories textarea {
   height: 5rem;
 }
 .form-container form #blog_title {

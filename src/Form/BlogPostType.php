@@ -34,6 +34,11 @@ class BlogPostType extends AbstractType
                 'mapped' => false,
                 'by_reference' => false
             ])
+            ->add('categories', CollectionType::class, [
+                'entry_type' => CategoryType::class,
+                'entry_options' => ['label' => false],
+                'allow_add' => true
+            ])
             ->add('submit', SubmitType::class)
         ;
     }

@@ -8,6 +8,10 @@
         {{ form_start(form) }}
         {{ form_row(form.title) }}
         {{ form_row(form.text) }}
+        <div id="category-list-container">
+            <ul id="categories-list" class="tags" data-prototype="{{ form_widget(form.categories.vars.prototype)|e('html_attr') }}">
+            </ul>
+        </div>
 
         <div id="image-list-container">
             <p class="info-blurb">
@@ -26,6 +30,6 @@
 
 {% endblock %}
 {% block javascripts %}
-    <script src="{{ asset('js/form-add-image.js') }}">
-    </script>
+    <script src="{{ asset('js/form-add-image.js') }}"></script>
+    <script src="{{ asset('js/form-add-category.js') }}"></script>
 {% endblock %}

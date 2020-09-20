@@ -465,6 +465,19 @@ article {
     box-shadow: 5px 5px 8px #ddd;
 }
 
+#category-list-container {
+    display: flex;
+}
+
+form {
+    ul {
+        li {
+            list-style-type: none;
+            padding: 1rem;
+        }
+    }
+}
+
 .form-container {
     width: 100%;
     color: $darkGrey;
@@ -492,7 +505,19 @@ article {
             }
         }
 
-        #blog_post_blogImages {
+        #blog_post_categories {
+            li {
+                display: flex;
+                gap: 1rem;
+
+                button {
+                    font-size: 0.7rem;
+                    height: 1.5rem;
+                }
+            }
+        }
+
+        #blog_post_blogImages, #blog_post_categories {
             flex-direction: column;
 
             li > div {

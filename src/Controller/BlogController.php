@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\BlogImage;
 use App\Entity\BlogPost;
+use App\Entity\Category;
 use App\Entity\Image;
 use App\Form\BlogPostType;
 use App\Repository\BlogPostRepository;
@@ -42,7 +43,15 @@ class BlogController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entitymanager = $this->getDoctrine()->getManager();
 
-            // make sure no empty blog image is being added
+            foreach ($form->get('categories') as $category) {
+                $categoryEntity = new Category();
+                $categoryName = $category->get('name')->getData();
+                $categoryEntity->setName($categoryName);
+
+                $entitymanager->persist($categoryEntity);
+
+                $blogPost->addCategory($categoryEntity);
+            }
 
             foreach ($form->get('blogImages') as $blogImage) {
                 $blogImageEntity = new BlogImage();
@@ -88,6 +97,11 @@ class BlogController extends AbstractController
 
             $blogPost->setEntered(new DateTime('now'));
             $blogPost->updateSlug();
+
+            foreach ($blogPost->getCategories() as $category) {
+                $category->addBlogPost($blogPost);
+                $entitymanager->persist($category);
+            }
 
             $entitymanager->persist($blogPost);
             $entitymanager->flush();
@@ -163,14 +177,23 @@ class BlogController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entitymanager = $this->getDoctrine()->getManager();
-            // make sure no empty blog image is being added
+
+            foreach ($form->get('categories') as $category) {
+                $categoryEntity = new Category();
+                $categoryName = $category->get('name')->getData();
+                $categoryEntity->setName($categoryName);
+
+                $entitymanager->persist($categoryEntity);
+
+                $blogPost->addCategory($categoryEntity);
+            }
+
 
             $blogInputs = $request->request->get("blog_post");
             $hasBlogImages = array_key_exists("blogImages", $blogInputs);
             if ($hasBlogImages) {
                 $blogInputs = $blogInputs["blogImages"];
             }
-            dump($blogInputs, $request);
             $currentBlogImages = $form->get('blogImages');
             $prevBlogImages = $blogPost->getBlogImages();
 
@@ -250,6 +273,11 @@ class BlogController extends AbstractController
 
                     $blogPost->addBlogImage($blogImageEntity);
                 }
+            }
+
+            foreach ($blogPost->getCategories() as $category) {
+                $category->addBlogPost($blogPost);
+                $entitymanager->persist($category);
             }
 
             $entitymanager->flush();

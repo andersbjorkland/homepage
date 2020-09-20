@@ -9,6 +9,10 @@
         {{ form_start(form) }}
         {{ form_row(form.title) }}
         {{ form_row(form.text) }}
+        <div id="category-list-container">
+            <ul id="categories-list" class="tags" data-prototype="{{ form_widget(form.categories.vars.prototype)|e('html_attr') }}">
+            </ul>
+        </div>
 
         <div id="image-list-container">
             <ol id="images-list" class="images" data-prototype="{{ form_widget(form.blogImages.vars.prototype)|e('html_attr') }}">
@@ -106,6 +110,78 @@
         }
 
         function removeImageForm(event) {
+            let elementRemove = event.target;
+            let parentRemove = elementRemove.parentElement;
+            parentRemove.parentNode.removeChild(parentRemove);
+        }
+
+    </script>
+    <script>
+        let categoriesContainer = document.getElementById('blog_post_categories');
+        let categoryCollectionContainer = document.getElementById('categories-list');
+
+        let categoryPrototypeString = categoryCollectionContainer.dataset.prototype;
+
+        var categoryList = document.createElement("ul");
+        categoryList.setAttribute('data-index', 1);
+        categoryList.setAttribute('data-prototype', categoryPrototypeString);
+
+        categoriesContainer.innerHTML = '';
+        categoriesContainer.appendChild(categoryList);
+
+        var addCategoryButton = document.createElement("button");
+        var addCategoryButtonText = document.createTextNode("Add category");
+
+        addCategoryButton.appendChild(addCategoryButtonText);
+        addCategoryButton.type = "button";
+        addCategoryButton.setAttribute('class', 'btn secondary');
+        addCategoryButton.addEventListener('click', addCategoryForm);
+
+        categoriesContainer.appendChild(addCategoryButton);
+
+        {% if  blogPost.categories is not empty %}
+            let categoryname = '';
+            let index = 1;
+            {% for category in blogPost.categories %}
+                categoryname = '{{ category.name }}';
+                setCategoryForm(index, categoryname);
+                index++;
+            {% endfor %}
+        {% endif %}
+
+        function addCategoryForm() {
+            let prototype = categoryPrototypeString;
+            let index = categoryList.dataset.index;
+            let newForm = prototype;
+            newForm = newForm.replace(/__name__/g, index);
+            categoryList.dataset.index =  1 + parseInt(index);
+
+            let removeButton = document.createElement("button");
+            let removeButtonText = document.createTextNode("Remove");
+            removeButton.appendChild(removeButtonText);
+            removeButton.type = "button";
+            removeButton.setAttribute("id", "remove_" + index);
+            removeButton.setAttribute("class", "btn danger");
+            removeButton.addEventListener('click', removeCategoryForm);
+
+            let newFormLi = document.createElement('li');
+            newFormLi.innerHTML = newForm;
+            newFormLi.appendChild(removeButton);
+            categoryList.appendChild(newFormLi);
+        }
+
+        function setCategoryForm(index, categoryName) {
+            addCategoryForm();
+            let objectIndex = index;
+            let categoryInput = document.getElementById('blog_post_categories_' + objectIndex +'_name');
+
+            let categoryInputDiv = categoryInput.parentElement;
+            categoryInputDiv.innerHTML =
+                '<input type="text" id="blog_post_categories_'+ objectIndex +'_name"'
+                + ' name="blog_post[categories]['+ objectIndex +'][name]" value="' + categoryName +'">';
+        }
+
+        function removeCategoryForm(event) {
             let elementRemove = event.target;
             let parentRemove = elementRemove.parentElement;
             parentRemove.parentNode.removeChild(parentRemove);
