@@ -424,6 +424,8 @@ form ul li {
   background-color: #ececec;
   padding: 0.4rem 0.8rem;
   border-radius: 0.6rem;
+  font-size: 0.8rem;
+  margin: 0;
 }
 
 .form-container {
@@ -767,6 +769,7 @@ header #start-header {
   display: flex;
   flex-direction: row;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .clicked {
