@@ -4,7 +4,12 @@ use App\Kernel;
 use Symfony\Component\ErrorHandler\Debug;
 use Symfony\Component\HttpFoundation\Request;
 
-require dirname(__DIR__).'/config/bootstrap.php';
+// Prod path
+require dirname(__DIR__).'/httpd.private/homepage/config/bootstrap.php';
+
+// Dev path
+// require dirname(__DIR__).'/config/bootstrap.php';
+
 
 if ($_SERVER['APP_DEBUG']) {
     umask(0000);
