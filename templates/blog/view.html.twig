@@ -8,8 +8,16 @@
 {% block metaTwitterDescription %}{{ post.text|striptags('<em><strong><i><mark><cite><dfn><br />')|raw|slice(0,220) }}{% endblock %}
 
 {% block metaOgImage %}{% if image is not empty %}{{ "http://andersbjorkland.online" ~ asset('uploads/images/' ~ image.fileName) }}{% endif %}{% endblock %}
-{% block metaTwitterImage %}{% if image is not empty %}{{ "http://http://andersbjorkland.online.se" ~ asset('uploads/images/' ~ image.fileName) }}{% endif %}{% endblock %}
-
+{% block metaTwitterImage %}{% if image is not empty %}{{ "http://andersbjorkland.online" ~ asset('uploads/images/' ~ image.fileName) }}{% endif %}{% endblock %}
+{% block additionalMeta %}
+    {% if post.categories is not empty %}
+        <meta name="keywords" content="
+            {% for category in post.categories %}
+                {{ category.name }},
+            {% endfor %}
+        ">
+    {% endif %}
+{% endblock %}
 
 {% block headJS %}
     <script src="https://kit.fontawesome.com/44dcb31394.js" crossorigin="anonymous"></script>

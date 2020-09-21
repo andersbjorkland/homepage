@@ -9,16 +9,16 @@
         <link rel="icon" 
         type="image/png" 
         href="{{ asset('favicon.svg') }}">
-        {% block meta %}
+        <meta name="author" content="Anders Björkland">
         <meta property="og:title" content="{% block metaOgTitle %}Effective and unique websites - Anders Björkland!{% endblock %}">
         <meta property="og:description" content="{% block metaOgDescription %}Hi! I am Anders. This is my home on the web. I love to code, and so I do it daily. I primarily code in PHP for server side magic and turn to React.js when client side interaction should be - INTERACTIVE. Follow my journey as I delve deeper into the world of code.{% endblock %}">
-        <meta property="og:image" content="{% block metaOgImage %}http://femtearenan.se/images/femtearenan.png{% endblock %}">
-        <meta property="og:url" content="https://femtearenan.se">
+        <meta property="og:image" content="{% block metaOgImage %}http://andersbjorkland.online/images/femtearenan.png{% endblock %}">
+        <meta property="og:url" content="https://andersbjorkland.online">
         <meta name="twitter:title" content="{% block metaTwitterTitle %}Effective and unique websites - Anders Björkland!{% endblock %}">
         <meta name="twitter:description" content="{% block metaTwitterDescription %}Hi! I am Anders. This is my home on the web. I love to code, and so I do it daily. I primarily code in PHP for server side magic and turn to React.js when client side interaction should be - INTERACTIVE. Follow my journey as I delve deeper into the world of code.{% endblock %}">
-        <meta name="twitter:image" content="{% block metaTwitterImage %}http://femtearenan.se/images/femtearenan.png{% endblock %}">
+        <meta name="twitter:image" content="{% block metaTwitterImage %}http://andersbjorkland.online/images/femtearenan.png{% endblock %}">
         <meta name="twitter:card" content="summary_large_image">
-        {% endblock %}
+        {% block additionalMeta%}{% endblock %}
         {% block headJS %}{% endblock %}
     </head>
     <body>
@@ -160,9 +160,9 @@
             <footer class="footer">
 
                 <div id="social-links">
-                    <a id="github" href="https://github.com/femtearenan" target="_blank">Github</a>
+                    <a id="github" href="https://github.com/andersbjorkland" target="_blank">Github</a>
                     <a id="twitter" href="https://twitter.com/abjorkland" target="_blank">Twitter</a>
-                    <a id="hire" href="mailto:anders@femtearenan.se">Hire me</a>
+                    <a id="hire" href="mailto:anders@andersbjorkland.online">Hire me</a>
                 </div>
                 <p>Anders Björkland 2020</p>
             </footer>

@@ -6,8 +6,6 @@
     <script src="https://kit.fontawesome.com/44dcb31394.js" crossorigin="anonymous"></script>
 {% endblock %}
 
-{% block meta %}
-{% if post is not empty %}
 {% block metaOgTitle %}{{ post.title }}{% endblock %}
 {% block metaTwitterTitle %}{{ post.title }}{% endblock %}
 {% block metaOgDescription %}{{ post.text|striptags('<em><strong><i><mark><cite><dfn><br />')|raw|slice(0,220) }}{% endblock %}
@@ -15,8 +13,6 @@
 
 {% block metaOgImage %}{% if image is not empty %}{{ "http://andersbjorkland.online" ~ asset('uploads/images/' ~ image.fileName) }}{% endif %}{% endblock %}
 {% block metaTwitterImage %}{% if image is not empty %}{{ "http://andersbjorkland.online" ~ asset('uploads/images/' ~ image.fileName) }}{% endif %}{% endblock %}
-{% endif %}
-{% endblock %}
 
 {% block body %}
     {% include 'blog/_view.html.twig' with {'post': post, 'posts': posts, 'image': image, 'text': text} %}
