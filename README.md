@@ -1,7 +1,7 @@
-# Femte Arenan
+# AndersBjorkland.online
 
 ## Introduction
-Femte Arenan is a personal website for Anders Björkland. It performs as a portfolio and api site for personal projects.
+andersbjorkland.online is a personal website for Anders Björkland. It performs as a portfolio and blog for personal projects.
 The project is built upon Symfony 5 and utilizes Doctrine.
 
 ## Deployment
