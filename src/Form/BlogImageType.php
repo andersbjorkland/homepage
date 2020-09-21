@@ -21,7 +21,7 @@ class BlogImageType extends AbstractType
                 'required' => false,
                 'constraints' => [
                     new File([
-                        'maxSize' => '4096k',
+                        'maxSize' => '32512k',
                         'mimeTypes' => [
                             'image/*'
                         ]

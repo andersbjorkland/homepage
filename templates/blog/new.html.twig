@@ -3,31 +3,36 @@
 {% block title %}Add News{% endblock %}
 
 {% block body %}
+
     <h1>Add a blog post</h1>
-    <div class="form-container">
-        {{ form_start(form) }}
-        {{ form_row(form.title) }}
-        {{ form_row(form.text) }}
-        <div id="category-list-container">
-            <ul id="categories-list" class="tags" data-prototype="{{ form_widget(form.categories.vars.prototype)|e('html_attr') }}">
-            </ul>
-        </div>
+    {% if added %}
+        <p>You have successfully added a blog post!</p>
+    {% else %}
 
-        <div id="image-list-container">
-            <p class="info-blurb">
-                Reference an image you add by typing |1| for first image, and so on. <br />
-                The first image added will be used as the Hero Image.
-            </p>
-            <ol id="images-list" class="images" data-prototype="{{ form_widget(form.blogImages.vars.prototype)|e('html_attr') }}">
-                {% for image in form.blogImages %}
-                    <li>{{ form_row(image) }}</li>
-                {% endfor %}
-            </ol>
-        </div>
-        {{ form_row(form.publishTime) }}
-        {{ form_end(form) }}
-    </div>
+        <div class="form-container">
+            {{ form_start(form) }}
+            {{ form_row(form.title) }}
+            {{ form_row(form.text) }}
+            <div id="category-list-container">
+                <ul id="categories-list" class="tags" data-prototype="{{ form_widget(form.categories.vars.prototype)|e('html_attr') }}">
+                </ul>
+            </div>
 
+            <div id="image-list-container">
+                <p class="info-blurb">
+                    Reference an image you add by typing |1| for first image, and so on. <br />
+                    The first image added will be used as the Hero Image.
+                </p>
+                <ol id="images-list" class="images" data-prototype="{{ form_widget(form.blogImages.vars.prototype)|e('html_attr') }}">
+                    {% for image in form.blogImages %}
+                        <li>{{ form_row(image) }}</li>
+                    {% endfor %}
+                </ol>
+            </div>
+            {{ form_row(form.publishTime) }}
+            {{ form_end(form) }}
+        </div>
+    {% endif %}
 {% endblock %}
 {% block javascripts %}
     <script src="{{ asset('js/form-add-image.js') }}"></script>

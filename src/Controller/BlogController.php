@@ -34,6 +34,7 @@ class BlogController extends AbstractController
     public function addPost(Request $request, SluggerInterface $slugger)
     {
         $blogPost = new BlogPost();
+        $added = false;
 
         $form = $this->createForm(BlogPostType::class, $blogPost);
         $form->handleRequest($request);
@@ -107,11 +108,12 @@ class BlogController extends AbstractController
             $entitymanager->persist($blogPost);
             $entitymanager->flush();
 
-            $this->redirectToRoute('post_edit', ["slug" => $blogPost->getSlug()]);
+            $added = true;
 
         }
         return $this->render('blog/new.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'added' => $added
         ]);
     }
 
@@ -126,13 +128,13 @@ class BlogController extends AbstractController
         $posts = $postRepository->getLatestPaginated(1, $limit);
 
         $text = $blogPost->getText();
-        $filePath = $_SERVER['APP_ENV'] === 'dev' ? '/uploads/images' : $this->getParameter('images_view');
+        $filePath = $_SERVER['APP_ENV'] === 'dev' ? '/uploads/images/' : $this->getParameter('images_directory');
         $blogImages = $blogPost->getBlogImages();
         $imageIndex = 1;
         foreach ($blogImages as $blogImage) {
             $pattern = '/\|' . $imageIndex . '\|/';
             if (strpos($text, '|' . $imageIndex . '|')) {
-                $replace = '<div class="img-container"> <img src="' . $filePath . '/'
+                $replace = '<div class="img-container"> <img src="/uploads/images/'
                     . $blogImage->getImage()->getFileName()
                     . '" alt="' . $blogImage->getImage()->getAlt() . '" /><p class="image-text">'. $blogImage->getSubtext() .'</p></div>';
                 $text = preg_replace($pattern, $replace, $text);
@@ -172,7 +174,7 @@ class BlogController extends AbstractController
         $form = $this->createForm(BlogPostType::class, $blogPost);
         $form->handleRequest($request);
 
-        $filePath = $_SERVER['APP_ENV'] === 'dev' ? 'uploads/images' : $this->getParameter('images_view');
+        $filePath = $_SERVER['APP_ENV'] === 'dev' ? 'uploads/images' : $this->getParameter('images_directory');
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entitymanager = $this->getDoctrine()->getManager();
@@ -332,7 +334,7 @@ class BlogController extends AbstractController
             $image = $blogImage->getImage();
         }
 
-        $filePath = $_SERVER['APP_ENV'] === 'dev' ? 'uploads/images' : $this->getParameter('images_view');
+        $filePath = $_SERVER['APP_ENV'] === 'dev' ? 'uploads/images' : $this->getParameter('images_directory');
 
         if ('POST' === $request->getMethod()) {
             $entitymanager = $this->getDoctrine()->getManager();
@@ -371,13 +373,13 @@ class BlogController extends AbstractController
         }
 
         $text = $post->getText();
-        $filePath = $_SERVER['APP_ENV'] === 'dev' ? '/uploads/images' : $this->getParameter('images_view');
+        $filePath = $_SERVER['APP_ENV'] === 'dev' ? '/uploads/images' : $this->getParameter('images_directory');
         $blogImages = $post->getBlogImages();
         $imageIndex = 1;
         foreach ($blogImages as $blogImage) {
             $pattern = '/\|' . $imageIndex . '\|/';
             if (strpos($text, '|' . $imageIndex . '|')) {
-                $replace = '<div class="img-container"> <img src="' . $filePath . '/'
+                $replace = '<div class="img-container"> <img src="/uploads/images/'
                     . $blogImage->getImage()->getFileName()
                     . '" alt="' . $blogImage->getImage()->getAlt() . '" /><p class="image-text">'. $blogImage->getSubtext() .'</p></div>';
                 $text = preg_replace($pattern, $replace, $text);
