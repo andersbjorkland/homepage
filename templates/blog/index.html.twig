@@ -14,7 +14,7 @@
 {% block metaTwitterDescription %}{{ post.text|striptags('<em><strong><i><mark><cite><dfn><br />')|raw|slice(0,220) }}{% endblock %}
 
 {% block metaOgImage %}{% if image is not empty %}{{ "http://andersbjorkland.online" ~ asset('uploads/images/' ~ image.fileName) }}{% endif %}{% endblock %}
-{% block metaTwitterImage %}{% if image is not empty %}{{ "http://femtearenan.se" ~ asset('uploads/images/' ~ image.fileName) }}{% endif %}{% endblock %}
+{% block metaTwitterImage %}{% if image is not empty %}{{ "http://andersbjorkland.online" ~ asset('uploads/images/' ~ image.fileName) }}{% endif %}{% endblock %}
 {% endif %}
 {% endblock %}
 
