@@ -873,7 +873,9 @@ button {
   gap: 1.5rem;
 }
 #portfolio-cards-container #portfolio-cards .card {
+  position: relative;
   padding: 1rem;
+  padding-bottom: 3.5rem;
   color: #5a5a5a;
   text-decoration: none;
   border-radius: 5px;
@@ -881,6 +883,10 @@ button {
 }
 #portfolio-cards-container #portfolio-cards .card h2 {
   color: #4504be;
+}
+#portfolio-cards-container #portfolio-cards .card .promo-container {
+  position: absolute;
+  bottom: 1rem;
 }
 #portfolio-cards-container #portfolio-cards .card:hover {
   animation: card-hover;

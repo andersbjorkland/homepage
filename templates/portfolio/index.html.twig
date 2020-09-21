@@ -19,7 +19,6 @@
                     <img src="{{ asset('uploads/images/' ~ project.image.fileName) }}" alt="{{ project.image.alt }}">
                     <h2>{{ project.name }}</h2>
                     <p class="tag-line">{{ project.textDescription }}</p>
-                    <p><a class="no-link btn promo" href="{{ project.link }}" target="_blank" class="visible-link">Check it out</a></p>
                 </div>
                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                     <div class="flex-row">
@@ -27,6 +26,7 @@
                         <a class="btn danger no-link" href="{{ path('portfolio_delete', {'id': project.id}) }}">Delete</a>
                     </div>
                 {% endif %}
+                <p class="promo-container"><a class="no-link btn promo" href="{{ project.link }}" target="_blank" class="visible-link">Check it out</a></p>
             </div>
         {% endfor %}
     </div>
