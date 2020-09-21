@@ -850,6 +850,12 @@ header {
     color: white;
 }
 
+.btn.promo {
+    background-color: $cherry;
+    padding: 0.2rem;
+    font-size: 1rem;
+}
+
 .btn.secondary {
     font-size: 1rem;
     width: fit-content;
