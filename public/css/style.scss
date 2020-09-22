@@ -469,6 +469,17 @@ article {
     display: flex;
 }
 
+#categories-list {
+    > li {
+        display: flex;
+
+        .btn {
+            font-size: 0.7rem;
+            height: 1.3rem;
+        }
+    }
+}
+
 form {
     ul {
         li {

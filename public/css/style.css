@@ -407,6 +407,14 @@ article .wp-block-gallery ul {
   display: flex;
 }
 
+#categories-list > li {
+  display: flex;
+}
+#categories-list > li .btn {
+  font-size: 0.7rem;
+  height: 1.3rem;
+}
+
 form ul li {
   list-style-type: none;
   padding: 1rem;

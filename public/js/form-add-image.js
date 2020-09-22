@@ -20,7 +20,7 @@ function addImageForm() {
     collectionContainer.dataset.index =  1 + parseInt(index);
 
     let removeButton = document.createElement("button");
-    let removeButtonText = document.createTextNode("Remove image");
+    let removeButtonText = document.createTextNode("×");
     removeButton.appendChild(removeButtonText);
     removeButton.type = "button";
     removeButton.setAttribute("id", "remove_" + index);
