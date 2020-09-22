@@ -467,11 +467,22 @@ article {
 
 #category-list-container {
     display: flex;
+    flex-direction: column;
 }
 
 #categories-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
     > li {
         display: flex;
+        margin: 0.6rem 0.4rem 0 0;
+        padding: 0;
+
+        div {
+            margin: 0;
+        }
 
         .btn {
             font-size: 0.7rem;

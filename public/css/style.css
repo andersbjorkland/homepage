@@ -405,10 +405,21 @@ article .wp-block-gallery ul {
 
 #category-list-container {
   display: flex;
+  flex-direction: column;
 }
 
+#categories-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 #categories-list > li {
   display: flex;
+  margin: 0.6rem 0.4rem 0 0;
+  padding: 0;
+}
+#categories-list > li div {
+  margin: 0;
 }
 #categories-list > li .btn {
   font-size: 0.7rem;

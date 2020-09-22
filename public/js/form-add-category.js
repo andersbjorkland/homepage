@@ -10,7 +10,7 @@ addCategoryButton.type = "button";
 addCategoryButton.setAttribute("class", "btn secondary");
 addCategoryButton.addEventListener('click',addCategoryForm);
 
-categoryCollectionContainer.appendChild(addCategoryButton);
+categoriesContainer.appendChild(addCategoryButton);
 
 function addCategoryForm() {
     let prototype = categoryCollectionContainer.dataset.prototype;
