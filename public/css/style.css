@@ -424,6 +424,8 @@ article .wp-block-gallery ul {
 #categories-list > li .btn {
   font-size: 0.7rem;
   height: 1.3rem;
+  width: 1.3rem;
+  padding: 0;
 }
 
 form ul li {
@@ -462,12 +464,12 @@ form ul li {
 .form-container form img {
   width: 12rem;
 }
-.form-container form div {
+.form-container form > div {
   margin-bottom: 0.5rem;
   display: grid;
-  grid-template-columns: 13rem auto;
+  grid-template-columns: 5rem auto;
 }
-.form-container form div div {
+.form-container form > div div {
   display: flex;
 }
 .form-container form #blog_post_categories li {
@@ -510,7 +512,6 @@ form ul li {
 }
 .form-container form label {
   margin-right: 0.5rem;
-  width: 12rem;
   text-align: end;
 }
 .form-container form input {
@@ -527,7 +528,7 @@ form ul li {
   font-size: 1.2rem;
 }
 .form-container form p {
-  margin-left: 12.5rem;
+  margin-left: 5rem;
   font-size: 1rem;
 }
 .form-container form button {
@@ -861,12 +862,27 @@ button {
   display: flex;
   flex-direction: column;
 }
-#image-list-container ol li div div {
-  display: grid;
-  grid-template-columns: 10rem 1fr;
+#image-list-container ol > li {
+  display: flex;
+  font-size: 0.8rem;
+  margin-top: 1rem;
 }
-#image-list-container ol li div div label {
-  text-align: left;
+#image-list-container ol > li input[type=file] {
+  padding: 0;
+  margin-bottom: 0.2rem;
+}
+#image-list-container ol > li > div > div {
+  display: grid;
+  grid-template-columns: 5rem 1fr;
+}
+#image-list-container ol > li .btn {
+  width: 1.3rem;
+  height: 1.3rem;
+  padding: 0;
+}
+#image-list-container ol > li textarea {
+  height: 3rem;
+  font-size: 0.8rem;
 }
 #image-list-container div {
   display: initial;

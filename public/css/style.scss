@@ -487,6 +487,8 @@ article {
         .btn {
             font-size: 0.7rem;
             height: 1.3rem;
+            width: 1.3rem;
+            padding: 0;
         }
     }
 }
@@ -533,10 +535,10 @@ form {
             width: 12rem;
         }
 
-        div {
+        > div {
             margin-bottom: 0.5rem;
             display: grid;
-            grid-template-columns: 13rem auto;
+            grid-template-columns: 5rem auto;
 
             div {
                 display: flex;
@@ -592,7 +594,6 @@ form {
 
         label {
             margin-right: 0.5rem;
-            width: 12rem;
             text-align: end;
         }
 
@@ -614,7 +615,7 @@ form {
         }
 
         p {
-            margin-left: 12.5rem;
+            margin-left: 5rem;
             font-size: 1rem;
         }
 
@@ -972,18 +973,38 @@ button {
     display: flex;
     flex-direction: column;
 
-    ol li div div {
-        display: grid;
-        grid-template-columns: 10rem 1fr;
+    ol>li {
+        display: flex;
+        font-size: 0.8rem;
+        margin-top: 1rem;
 
-        label {
-            text-align: left;
+        input[type="file"] {
+            padding: 0;
+            margin-bottom: 0.2rem;
+        }
+
+        >div>div {
+            display: grid;
+            grid-template-columns: 5rem 1fr;
+        }
+
+        .btn {
+            width: 1.3rem;
+            height: 1.3rem;
+            padding: 0;
+        }
+
+        textarea {
+            height: 3rem;
+            font-size: 0.8rem;
         }
     }
 
     div {
         display: initial;
     }
+
+
 }
 
 
