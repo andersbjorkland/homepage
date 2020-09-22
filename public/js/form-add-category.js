@@ -1,4 +1,5 @@
 let categoriesContainer = document.getElementById('category-list-container');
+let formReqContainer = document.getElementById('blog_post_categories');
 let categoryCollectionContainer = document.getElementById('categories-list');
 categoryCollectionContainer.setAttribute('data-index', 1);
 
@@ -11,6 +12,7 @@ addCategoryButton.setAttribute("class", "btn secondary");
 addCategoryButton.addEventListener('click',addCategoryForm);
 
 categoriesContainer.appendChild(addCategoryButton);
+formReqContainer.appendChild(categoriesContainer);
 
 function addCategoryForm() {
     let prototype = categoryCollectionContainer.dataset.prototype;

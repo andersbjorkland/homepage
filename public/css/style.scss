@@ -474,6 +474,7 @@ article {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    padding-left: 0;
 
     > li {
         display: flex;
@@ -549,11 +550,6 @@ form {
             li {
                 display: flex;
                 gap: 1rem;
-
-                button {
-                    font-size: 0.7rem;
-                    height: 1.5rem;
-                }
             }
         }
 
@@ -566,10 +562,11 @@ form {
             }
 
             li {
+                margin-right: 1.2rem;
+
                 div > div:nth-child(1) {
                     flex-direction: column;
                 }
-                margin-bottom: 1rem;
                 p {
                     margin-left: 0;
                     margin-right: 0.5rem;

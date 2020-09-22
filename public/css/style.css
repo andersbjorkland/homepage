@@ -412,6 +412,7 @@ article .wp-block-gallery ul {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  padding-left: 0;
 }
 #categories-list > li {
   display: flex;
@@ -476,10 +477,6 @@ form ul li {
   display: flex;
   gap: 1rem;
 }
-.form-container form #blog_post_categories li button {
-  font-size: 0.7rem;
-  height: 1.5rem;
-}
 .form-container form #blog_post_blogImages, .form-container form #blog_post_categories {
   flex-direction: column;
 }
@@ -488,7 +485,7 @@ form ul li {
   flex-direction: column;
 }
 .form-container form #blog_post_blogImages li, .form-container form #blog_post_categories li {
-  margin-bottom: 1rem;
+  margin-right: 1.2rem;
 }
 .form-container form #blog_post_blogImages li div > div:nth-child(1), .form-container form #blog_post_categories li div > div:nth-child(1) {
   flex-direction: column;
