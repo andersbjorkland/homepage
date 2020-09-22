@@ -860,7 +860,6 @@ button {
   flex-direction: column;
 }
 #image-list-container ol > li {
-  display: flex;
   font-size: 0.8rem;
   margin-top: 1rem;
 }

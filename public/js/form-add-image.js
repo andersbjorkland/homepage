@@ -1,4 +1,5 @@
 var imagesContainer = document.getElementById('image-list-container');
+var formReqImgContainer = document.getElementById('blog_post_blogImages');
 var collectionContainer = document.getElementById('images-list');
 collectionContainer.setAttribute('data-index', 1);
 
@@ -10,7 +11,8 @@ addButton.type = "button";
 addButton.setAttribute("class", "btn secondary");
 addButton.addEventListener('click',addImageForm);
 
-imagesContainer.appendChild(addButton);
+imagesContainer.appendChild(addButton)
+formReqImgContainer.appendChild(imagesContainer);
 
 function addImageForm() {
     let prototype = collectionContainer.dataset.prototype;
