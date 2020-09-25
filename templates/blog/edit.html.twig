@@ -26,7 +26,7 @@
 {% endblock %}
 {% block javascripts %}
     <script>
-        var imagesContainer = document.getElementById('blog_post_blogImages');
+        var imagesContainer = document.getElementById('blog_update_blogImages');
 
         var collectionContainer = document.getElementById('images-list');
         var prototypeString = collectionContainer.dataset.prototype;
@@ -86,20 +86,20 @@
         function setImageForm(index, fileName, alt, subtext) {
             addImageForm();
             let objectIndex = index;
-            let imageInput = document.getElementById('blog_post_blogImages_' + objectIndex +'_image');
+            let imageInput = document.getElementById('blog_update_blogImages_' + objectIndex +'_image');
             let imageInputDiv = imageInput.parentElement;
             imageInputDiv.innerHTML =
-                '<input type="hidden" id="blog_post_blogImages_'+ objectIndex +'_image"'
-                + ' name="blog_post[blogImages]['+ objectIndex +'][image]" value="' + fileName +'">';
+                '<input type="hidden" id="blog_update_blogImages_'+ objectIndex +'_image"'
+                + ' name="blog_update[blogImages]['+ objectIndex +'][image]" value="' + fileName +'">';
             let imageInputP = document.createElement('p');
             let pText = document.createTextNode(fileName);
             imageInputP.appendChild(pText);
             imageInputDiv.appendChild(imageInputP);
 
-            let imageAlt = document.getElementById('blog_post_blogImages_' + objectIndex + '_alt');
+            let imageAlt = document.getElementById('blog_update_blogImages_' + objectIndex + '_alt');
             imageAlt.setAttribute('value', alt);
 
-            let imageSubtext = document.getElementById('blog_post_blogImages_' + objectIndex + '_subtext');
+            let imageSubtext = document.getElementById('blog_update_blogImages_' + objectIndex + '_subtext');
             imageSubtext.innerHTML = subtext;
 
             let imgElement = document.createElement('img');
@@ -117,7 +117,7 @@
 
     </script>
     <script>
-        let categoriesContainer = document.getElementById('blog_post_categories');
+        let categoriesContainer = document.getElementById('blog_update_categories');
         let categoryCollectionContainer = document.getElementById('categories-list');
 
         let categoryPrototypeString = categoryCollectionContainer.dataset.prototype;
@@ -173,12 +173,12 @@
         function setCategoryForm(index, categoryName) {
             addCategoryForm();
             let objectIndex = index;
-            let categoryInput = document.getElementById('blog_post_categories_' + objectIndex +'_name');
+            let categoryInput = document.getElementById('blog_update_categories_' + objectIndex +'_name');
 
             let categoryInputDiv = categoryInput.parentElement;
             categoryInputDiv.innerHTML =
-                '<input type="text" id="blog_post_categories_'+ objectIndex +'_name"'
-                + ' name="blog_post[categories]['+ objectIndex +'][name]" value="' + categoryName +'">';
+                '<input type="text" id="blog_update_categories_'+ objectIndex +'_name"'
+                + ' name="blog_update[categories]['+ objectIndex +'][name]" value="' + categoryName +'">';
         }
 
         function removeCategoryForm(event) {

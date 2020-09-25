@@ -473,35 +473,41 @@ form ul li {
 .form-container form > div div {
   display: flex;
 }
-.form-container form #blog_post_categories li {
+.form-container form #blog_update_categories > ul {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.form-container form #blog_post_categories li, .form-container form #blog_update_categories li {
+  display: flex;
+  flex-direction: row;
   gap: 1rem;
 }
-.form-container form #blog_post_blogImages, .form-container form #blog_post_categories {
+.form-container form #blog_post_blogImages, .form-container form #blog_update_blogImages, .form-container form #blog_post_categories, .form-container form #blog_update_categories {
   flex-direction: column;
 }
-.form-container form #blog_post_blogImages li > div, .form-container form #blog_post_categories li > div {
+.form-container form #blog_post_blogImages li > div, .form-container form #blog_update_blogImages li > div, .form-container form #blog_post_categories li > div, .form-container form #blog_update_categories li > div {
   display: flex;
   flex-direction: column;
 }
-.form-container form #blog_post_blogImages li, .form-container form #blog_post_categories li {
+.form-container form #blog_post_blogImages li, .form-container form #blog_update_blogImages li, .form-container form #blog_post_categories li, .form-container form #blog_update_categories li {
   margin-right: 1.2rem;
 }
-.form-container form #blog_post_blogImages li div > div:nth-child(1), .form-container form #blog_post_categories li div > div:nth-child(1) {
+.form-container form #blog_post_blogImages li div > div:nth-child(1), .form-container form #blog_update_blogImages li div > div:nth-child(1), .form-container form #blog_post_categories li div > div:nth-child(1), .form-container form #blog_update_categories li div > div:nth-child(1) {
   flex-direction: column;
 }
-.form-container form #blog_post_blogImages li p, .form-container form #blog_post_categories li p {
+.form-container form #blog_post_blogImages li p, .form-container form #blog_update_blogImages li p, .form-container form #blog_post_categories li p, .form-container form #blog_update_categories li p {
   margin-left: 0;
   margin-right: 0.5rem;
   text-align: left;
 }
-.form-container form #blog_post_blogImages li label, .form-container form #blog_post_categories li label {
+.form-container form #blog_post_blogImages li label, .form-container form #blog_update_blogImages li label, .form-container form #blog_post_categories li label, .form-container form #blog_update_categories li label {
   text-align: left;
 }
-.form-container form #blog_post_blogImages img, .form-container form #blog_post_categories img {
+.form-container form #blog_post_blogImages img, .form-container form #blog_update_blogImages img, .form-container form #blog_post_categories img, .form-container form #blog_update_categories img {
   height: 12rem;
 }
-.form-container form #blog_post_blogImages textarea, .form-container form #blog_post_categories textarea {
+.form-container form #blog_post_blogImages textarea, .form-container form #blog_update_blogImages textarea, .form-container form #blog_post_categories textarea, .form-container form #blog_update_categories textarea {
   height: 5rem;
 }
 .form-container form #blog_title {

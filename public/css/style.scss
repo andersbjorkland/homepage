@@ -545,15 +545,21 @@ form {
                 display: flex;
             }
         }
+        #blog_update_categories > ul{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
 
-        #blog_post_categories {
+        #blog_post_categories, #blog_update_categories {
             li {
                 display: flex;
+                flex-direction: row;
                 gap: 1rem;
             }
         }
 
-        #blog_post_blogImages, #blog_post_categories {
+        #blog_post_blogImages, #blog_update_blogImages, #blog_post_categories, #blog_update_categories {
             flex-direction: column;
 
             li > div {
