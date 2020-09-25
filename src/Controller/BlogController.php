@@ -7,6 +7,7 @@ use App\Entity\BlogPost;
 use App\Entity\Category;
 use App\Entity\Image;
 use App\Form\BlogPostType;
+use App\Form\BlogUpdateType;
 use App\Repository\BlogPostRepository;
 use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -98,15 +99,19 @@ class BlogController extends AbstractController
             }
 
             $blogPost->setEntered(new DateTime('now'));
+            $publishTime = $form->get('publishTime')->getData();
+            if ($publishTime) {
+                $blogPost->setPublishTime($publishTime);
+            }
             $blogPost->updateSlug();
 
             foreach ($blogPost->getCategories() as $category) {
                 $category->addBlogPost($blogPost);
                 $entitymanager->persist($category);
             }
-
             $entitymanager->persist($blogPost);
             $entitymanager->flush();
+
 
             $added = true;
 
@@ -128,7 +133,6 @@ class BlogController extends AbstractController
         $posts = $postRepository->getLatestPaginated(1, $limit);
 
         $text = $blogPost->getText();
-        $filePath = $_SERVER['APP_ENV'] === 'dev' ? '/uploads/images/' : $this->getParameter('images_directory');
         $blogImages = $blogPost->getBlogImages();
         $imageIndex = 1;
         foreach ($blogImages as $blogImage) {
@@ -167,11 +171,12 @@ class BlogController extends AbstractController
         $messages = [];
 
         $blogImages = $blogPost->getBlogImages();
+        //used when lazy loading.
         foreach ($blogImages as $blogImage) {
             $image = $blogImage->getImage();
         }
 
-        $form = $this->createForm(BlogPostType::class, $blogPost);
+        $form = $this->createForm(BlogUpdateType::class, $blogPost);
         $form->handleRequest($request);
 
         $filePath = $_SERVER['APP_ENV'] === 'dev' ? 'uploads/images' : $this->getParameter('images_directory');
@@ -322,36 +327,6 @@ class BlogController extends AbstractController
     }
 
     /**
-     * @Route("/admin/blog/{slug}/release", name="post_release", methods={"GET", "POST"})
-     */
-    public function releasePost(BlogPost $blogPost, Request $request)
-    {
-        $messages = [];
-
-        // In case of lazy loading
-        $blogImages = $blogPost->getBlogImages();
-        foreach ($blogImages as $blogImage) {
-            $image = $blogImage->getImage();
-        }
-
-        $filePath = $_SERVER['APP_ENV'] === 'dev' ? 'uploads/images' : $this->getParameter('images_directory');
-
-        if ('POST' === $request->getMethod()) {
-            $entitymanager = $this->getDoctrine()->getManager();
-
-            $blogPost->setIsReleasable(!$blogPost->getIsReleasable());
-            $entitymanager->persist($blogPost);
-            $entitymanager->flush();
-        }
-
-        return $this->render('blog/release.html.twig', [
-            "blogPost" => $blogPost,
-            "messages" => $messages,
-            "filePath" => $filePath
-        ]);
-    }
-
-    /**
      * @Route("/blog/{page}", name="post_page")
      */
     public function indexByPage($page) {
@@ -373,7 +348,6 @@ class BlogController extends AbstractController
         }
 
         $text = $post->getText();
-        $filePath = $_SERVER['APP_ENV'] === 'dev' ? '/uploads/images' : $this->getParameter('images_directory');
         $blogImages = $post->getBlogImages();
         $imageIndex = 1;
         foreach ($blogImages as $blogImage) {
