@@ -1,7 +1,6 @@
 {% extends "base.html.twig" %}
 {% set page = "blog" %}
-{# {% set adminControl = "blog" %} #}
-
+{% block title %}{{ post.title }}{% endblock %}
 {% block headJS %}
     <script src="https://kit.fontawesome.com/44dcb31394.js" crossorigin="anonymous"></script>
 {% endblock %}

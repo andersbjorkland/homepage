@@ -1,7 +1,6 @@
 {% extends "base.html.twig" %}
 {% set page = "blog" %}
-
-{# {% set adminControl = "blog" %} #}
+{% block title %}{{ post.title }}{% endblock %}
 {% block metaOgTitle %}{{ post.title }}{% endblock %}
 {% block metaTwitterTitle %}{{ post.title }}{% endblock %}
 {% block metaOgDescription %}{{ post.text|striptags('<em><strong><i><mark><cite><dfn><br />')|raw|slice(0,220) }}{% endblock %}
