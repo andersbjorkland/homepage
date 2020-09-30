@@ -229,7 +229,7 @@ class BlogController extends AbstractController
             }
 
 
-            $blogInputs = $request->request->get("blog_post");
+            $blogInputs = $request->request->get("blog_update");
             $hasBlogImages = array_key_exists("blogImages", $blogInputs);
             if ($hasBlogImages) {
                 $blogInputs = $blogInputs["blogImages"];
