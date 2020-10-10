@@ -327,7 +327,7 @@ class BlogController extends AbstractController
     }
 
     /**
-     * @Route("/blog/{page}", name="post_page")
+     * @Route("/blog/page/{page}", name="post_page")
      */
     public function indexByPage($page) {
         $postRepository = $this->getDoctrine()->getRepository(BlogPost::class);

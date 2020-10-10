@@ -3,72 +3,127 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 ">
     <url>
         <loc>https://andersbjorkland.online/</loc>
-        <lastmod>2020-10-10T07:06:06+00:00</lastmod>
+        <lastmod>2020-10-10T09:59:57+00:00</lastmod>
         <priority>1.00</priority>
     </url>
     <url>
         <loc>https://andersbjorkland.online/portfolio</loc>
-        <lastmod>2020-10-10T07:06:06+00:00</lastmod>
+        <lastmod>2020-10-10T09:59:57+00:00</lastmod>
         <priority>0.80</priority>
     </url>
     <url>
         <loc>https://andersbjorkland.online/blog/</loc>
-        <lastmod>2020-10-10T07:06:06+00:00</lastmod>
+        <lastmod>2020-10-10T09:59:57+00:00</lastmod>
         <priority>0.80</priority>
     </url>
     <url>
         <loc>https://andersbjorkland.online/about</loc>
-        <lastmod>2020-10-10T07:06:06+00:00</lastmod>
+        <lastmod>2020-10-10T09:59:57+00:00</lastmod>
         <priority>0.80</priority>
     </url>
     <url>
         <loc>https://andersbjorkland.online/blog/2020-10-07_Inheritance_in_Java</loc>
-        <lastmod>2020-10-10T07:06:06+00:00</lastmod>
+        <lastmod>2020-10-10T09:59:57+00:00</lastmod>
         <priority>0.64</priority>
     </url>
     <url>
         <loc>https://andersbjorkland.online/blog/2020-10-09_Friday_review_Week_41</loc>
-        <lastmod>2020-10-10T07:06:06+00:00</lastmod>
+        <lastmod>2020-10-10T09:59:57+00:00</lastmod>
         <priority>0.64</priority>
     </url>
     <url>
         <loc>https://andersbjorkland.online/blog/2020-10-02_Friday_review_Week_40</loc>
-        <lastmod>2020-10-10T07:06:06+00:00</lastmod>
+        <lastmod>2020-10-10T09:59:57+00:00</lastmod>
         <priority>0.64</priority>
     </url>
     <url>
         <loc>https://andersbjorkland.online/blog/2020-09-30_Events_in_Swing</loc>
-        <lastmod>2020-10-10T07:06:06+00:00</lastmod>
+        <lastmod>2020-10-10T09:59:57+00:00</lastmod>
         <priority>0.64</priority>
     </url>
     <url>
         <loc>https://andersbjorkland.online/blog/2020-09-22_Layout_managers_for_Swing</loc>
-        <lastmod>2020-10-10T07:06:06+00:00</lastmod>
+        <lastmod>2020-10-10T09:59:57+00:00</lastmod>
         <priority>0.64</priority>
     </url>
     <url>
         <loc>https://andersbjorkland.online/blog/2020-09-21_Count_with_Swing</loc>
-        <lastmod>2020-10-10T07:06:06+00:00</lastmod>
+        <lastmod>2020-10-10T09:59:57+00:00</lastmod>
         <priority>0.64</priority>
     </url>
     <url>
         <loc>https://andersbjorkland.online/blog/2020-09-21_1%252C_2%252C_3%252C_Enum</loc>
-        <lastmod>2020-10-10T07:06:06+00:00</lastmod>
+        <lastmod>2020-10-10T09:59:57+00:00</lastmod>
         <priority>0.64</priority>
     </url>
     <url>
         <loc>https://andersbjorkland.online/blog/2020-09-21_Packing_heat_with_Java_packages</loc>
-        <lastmod>2020-10-10T07:06:06+00:00</lastmod>
+        <lastmod>2020-10-10T09:59:57+00:00</lastmod>
         <priority>0.64</priority>
     </url>
     <url>
         <loc>https://andersbjorkland.online/blog/2020-09-21_UML_with_Class</loc>
-        <lastmod>2020-10-10T07:06:06+00:00</lastmod>
+        <lastmod>2020-10-10T09:59:57+00:00</lastmod>
         <priority>0.64</priority>
     </url>
     <url>
         <loc>https://andersbjorkland.online/blog/2020-09-21_Buffer_Builder_standard_String</loc>
-        <lastmod>2020-10-10T07:06:06+00:00</lastmod>
+        <lastmod>2020-10-10T09:59:57+00:00</lastmod>
         <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://andersbjorkland.online/blog/page/1</loc>
+        <lastmod>2020-10-10T09:59:57+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://andersbjorkland.online/blog/page/2</loc>
+        <lastmod>2020-10-10T09:59:57+00:00</lastmod>
+        <priority>0.64</priority>
+    </url>
+    <url>
+        <loc>https://andersbjorkland.online/blog/2020-09-21_Learning_Java</loc>
+        <lastmod>2020-10-10T09:59:57+00:00</lastmod>
+        <priority>0.51</priority>
+    </url>
+    <url>
+        <loc>https://andersbjorkland.online/blog/2020-09-21_A_Simple_Name_for_a_Civics_App%253F</loc>
+        <lastmod>2020-10-10T09:59:57+00:00</lastmod>
+        <priority>0.51</priority>
+    </url>
+    <url>
+        <loc>https://andersbjorkland.online/blog/2020-09-21_Civics_app_-_a_conceptual_overview</loc>
+        <lastmod>2020-10-10T09:59:57+00:00</lastmod>
+        <priority>0.51</priority>
+    </url>
+    <url>
+        <loc>https://andersbjorkland.online/blog/2020-09-21_Sketching_out_a_civics_app</loc>
+        <lastmod>2020-10-10T09:59:57+00:00</lastmod>
+        <priority>0.51</priority>
+    </url>
+    <url>
+        <loc>https://andersbjorkland.online/blog/2020-09-21_A_quick_guide_to_API_Platform_on_Symfony</loc>
+        <lastmod>2020-10-10T09:59:57+00:00</lastmod>
+        <priority>0.51</priority>
+    </url>
+    <url>
+        <loc>https://andersbjorkland.online/blog/2020-09-21_Round_2_%2523100DaysOfCode</loc>
+        <lastmod>2020-10-10T09:59:57+00:00</lastmod>
+        <priority>0.51</priority>
+    </url>
+    <url>
+        <loc>https://andersbjorkland.online/blog/2020-09-21_100_Days_of_Code</loc>
+        <lastmod>2020-10-10T09:59:57+00:00</lastmod>
+        <priority>0.51</priority>
+    </url>
+    <url>
+        <loc>https://andersbjorkland.online/blog/2020-09-21_What_a_fortnight</loc>
+        <lastmod>2020-10-10T09:59:57+00:00</lastmod>
+        <priority>0.51</priority>
+    </url>
+    <url>
+        <loc>https://andersbjorkland.online/blog/2020-09-21_Redoing_the_backend</loc>
+        <lastmod>2020-10-10T09:59:57+00:00</lastmod>
+        <priority>0.51</priority>
     </url>
 </urlset>
