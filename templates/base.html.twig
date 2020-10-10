@@ -11,7 +11,7 @@
         href="{{ asset('favicon.svg') }}">
         <meta name="author" content="Anders Björkland">
         {% block additionalMeta%}{% endblock %}
-        <meta property="description" content="{% block metaDescription %}Hi! I am Anders. This is my home on the web. I love to code, and so I do it daily. I primarily code in PHP for server side magic and turn to React.js when client side interaction should be - INTERACTIVE. Follow my journey as I delve deeper into the world of code.{% endblock %}">
+        <meta name="description" content="{% block metaDescription %}Hi! I am Anders. This is my home on the web. I love to code, and so I do it daily. I primarily code in PHP for server side magic and turn to React.js when client side interaction should be - INTERACTIVE. Follow my journey as I delve deeper into the world of code.{% endblock %}">
         <meta property="og:title" content="{% block metaOgTitle %}Effective and unique websites - Anders Björkland!{% endblock %}">
         <meta property="og:description" content="{% block metaOgDescription %}Hi! I am Anders. This is my home on the web. I love to code, and so I do it daily. I primarily code in PHP for server side magic and turn to React.js when client side interaction should be - INTERACTIVE. Follow my journey as I delve deeper into the world of code.{% endblock %}">
         <meta property="og:image" content="{% block metaOgImage %}http://andersbjorkland.online/images/femtearenan.png{% endblock %}">
@@ -81,6 +81,7 @@
                                 </svg>
                                 <div class="link-text">Portfolio</div>
                             </div>
+                            <span class="assistive-text">To Portfolio</span>
                         </a>
                     </div>
                     <div class="links-container">
@@ -104,6 +105,7 @@
                                 </svg>
                                 <div class="link-text">Blog</div>
                             </div>
+                            <span class="assistive-text">To Blog</span>
                         </a>
                     </div>
                     <div class="links-container">
@@ -133,6 +135,7 @@
                                 </svg>
                                 <div class="link-text">About</div>
                             </div>
+                            <span class="assistive-text">To About</span>
                         </a>
                     </div>
                     {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
@@ -163,6 +166,7 @@
                                 </svg>
                                 <div class="link-text">Admin</div>
                             </div>
+                            <span class="assistive-text">To Admin</span>
                         </a>
                     </div>
                     {% endif %}
