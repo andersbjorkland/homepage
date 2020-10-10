@@ -19,6 +19,8 @@ $dangerColor: $orange;
 $sans: 'Sniglet', 'Segoe UI', Tahoma, Verdana, sans-serif;
 $rale: 'Raleway', Arial, Helvetica, sans-serif;
 
+.assistive-text { height: 1px; width: 1px; position: absolute; overflow: hidden; top: -10px; }
+
 html {
     font-size: 20px;
 }
@@ -62,7 +64,7 @@ body {
                 background-color: #1da1f2
             }
             #hire {
-                background-color: $cherry;
+                background-color: #a8247a;
             }
         
             a {

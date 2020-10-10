@@ -1,3 +1,11 @@
+.assistive-text {
+  height: 1px;
+  width: 1px;
+  position: absolute;
+  overflow: hidden;
+  top: -10px;
+}
+
 html {
   font-size: 20px;
 }
@@ -41,7 +49,7 @@ body {
   background-color: #1da1f2;
 }
 #sidebar footer #social-links #hire {
-  background-color: #FC60C5;
+  background-color: #a8247a;
 }
 #sidebar footer #social-links a {
   display: block;

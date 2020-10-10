@@ -56,12 +56,14 @@
                         </g>
                         </g>
                     </svg>
+                    <span class="assistive-text">To Home</span>
                 </a>
 
                 <div id="nav-container">
                     <div class="links-container">
                         <a class="back-link {% if page == "portfolio" %}active{% endif %}" href="/">
                             <img src="{{ asset('images/Back.svg')}}" alt="back">
+                            <span class="assistive-text">To Home</span>
                         </a>
                         <a class="nav-link {% if page == "portfolio" %}active{% endif %}" id="portfolio-link" href="/portfolio">
                             <div class="inner-container-link" id="portfolio-inner-container">
@@ -84,6 +86,7 @@
                     <div class="links-container">
                         <a class="back-link {% if page == "blog" %}active{% endif %}" href="/">
                             <img src="{{ asset('images/Back.svg')}}" alt="back">
+                            <span class="assistive-text">To Home</span>
                         </a>
                         <a class="nav-link {% if page == "blog" %}active{% endif %}" id="blog-link" href="/blog">
                             <div class="inner-container-link" id="blog-inner-container">
@@ -106,6 +109,7 @@
                     <div class="links-container">
                         <a class="back-link {% if page == "about" %}active{% endif %}" href="/">
                             <img src="{{ asset('images/Back.svg')}}" alt="back">
+                            <span class="assistive-text">To Home</span>
                         </a>
                         <a class="nav-link {% if page == "about" %}active{% endif %}" id="about-link" href="/about">
                             <div class="inner-container-link" id="process-inner-container">
@@ -135,6 +139,7 @@
                     <div class="links-container">
                         <a class="back-link {% if page == "admin" %}active{% endif %}" href="/">
                             <img src="{{ asset('images/Back.svg')}}" alt="back">
+                            <span class="assistive-text">To Home</span>
                         </a>
                         <a class="nav-link {% if page == "admin" %}active{% endif %}" id="admin-link" href="/admin">
                             <div class="inner-container-link" id="process-inner-container">
@@ -165,14 +170,15 @@
                 <div id="back-sm" class="links-container no-show">
                     <a href="/">
                         <img src="{{ asset('images/Back.svg')}}" alt="back">
+                        <span class="assistive-text">To Home</span>
                     </a>
                 </div>
             </nav>
             <footer class="footer">
 
                 <div id="social-links">
-                    <a id="github" href="https://github.com/andersbjorkland" target="_blank">Github</a>
-                    <a id="twitter" href="https://twitter.com/abjorkland" target="_blank">Twitter</a>
+                    <a id="github" href="https://github.com/andersbjorkland" target="_blank" rel="noreferrer">Github</a>
+                    <a id="twitter" href="https://twitter.com/abjorkland" target="_blank" rel="noreferrer">Twitter</a>
                     <a id="hire" href="mailto:contact@andersbjorkland.online">Hire me</a>
                 </div>
                 <p>Anders Björkland 2020</p>
