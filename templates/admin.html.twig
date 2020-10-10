@@ -2,7 +2,7 @@
 {% set page = "admin" %}
 {% set adminControl = "root" %}
 {% block header %} {% include "_adminControl.html.twig" %} {% endblock %}
-
+{% block additionalMeta%}<meta name="robots" content="noindex, nofollow" />{% endblock %}
 {% block body %}
 <div class="start">
     {% if unpublished|length > 0 %}

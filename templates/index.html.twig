@@ -2,6 +2,8 @@
 {% set page = "start" %}
 
 {% block header %} {% include "_introHeader.html.twig" %} {% endblock %}
+{% block additionalMeta%}<meta name="robots" content="index, follow" />{% endblock %}
+
 {% block body %}
     <div id="sun"><img src="images/Sun.svg" alt="sun"></div>
     <div id="pitch-container" class="intro">
