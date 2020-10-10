@@ -11,15 +11,6 @@ body {
   font-family: "Raleway", Arial, Helvetica, sans-serif;
 }
 
-.footer-delay {
-  opacity: 0;
-  animation: appear;
-  animation-delay: 2.4s;
-  animation-duration: 0.2s;
-  animation-timing-function: ease-in;
-  animation-fill-mode: forwards;
-}
-
 #sidebar {
   min-height: 100vh;
   width: 4.1rem;
@@ -96,7 +87,7 @@ body {
 }
 #sidebar nav .nav-link:hover {
   animation: hover;
-  animation-duration: 0.5s;
+  animation-duration: 0.3s;
   animation-fill-mode: forwards;
   backface-visibility: hidden;
 }
@@ -581,15 +572,7 @@ header #droplet {
   position: relative;
   left: -0.5rem;
   animation: speaking;
-  animation-duration: 0.4s;
-}
-header #start-header {
-  opacity: 0;
-  animation: appear;
-  animation-delay: 0.4s;
   animation-duration: 0.2s;
-  animation-timing-function: ease-in;
-  animation-fill-mode: forwards;
 }
 
 @keyframes appear {
@@ -648,22 +631,6 @@ header #start-header {
   margin-top: 25px;
 }
 
-#pitch-container.intro {
-  opacity: 0;
-  animation: pitch;
-  animation-delay: 1.7s;
-  animation-duration: 1.6s;
-  animation-fill-mode: forwards;
-}
-
-@keyframes pitch {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
 #cloud-container {
   display: flex;
   flex-direction: column;
@@ -707,16 +674,10 @@ header #start-header {
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 0;
   z-index: 21;
   height: 72px;
   width: 195px;
   font-family: "Sniglet", "Segoe UI", Tahoma, Verdana, sans-serif;
-  animation: appear;
-  animation-delay: 3s;
-  animation-duration: 1.2s;
-  animation-timing-function: ease-in;
-  animation-fill-mode: forwards;
 }
 #learn-more p {
   margin: 0;
@@ -806,7 +767,7 @@ button {
 
 #learn-content.show {
   animation: appear;
-  animation-duration: 0.6s;
+  animation-duration: 0.4s;
 }
 
 #learn-content.reverse {
@@ -1299,13 +1260,8 @@ button.clicked:hover {
 }
 @media (min-width: 1200px) and (min-height: 700px) {
   #learn-content {
-    opacity: 0;
     display: block;
     position: inherit;
-    animation: appear;
-    animation-delay: 3s;
-    animation-duration: 2s;
-    animation-fill-mode: forwards;
   }
 
   #learn-more {
